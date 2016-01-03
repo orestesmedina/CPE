@@ -1,10 +1,15 @@
 <?php
 
 class ManejadorComputadora extends Conexion {
+    public function __construct() {
+        parent::__construct();
+    }
 
     public function insertarComputadora(Computadora $computadora) {
         try {
-            if ($this->getEquipo($computadora->getPlaca()) == false) {
+            $manejadorEquipo = new ManejadorEquipo();
+
+            if ($manejadorEquipo->existeEquipo($computadora->getPlaca()) == false) {
                 $this->conectar();
                 if ($stmt = $this->getConexion()->prepare('INSERT INTO Equipo (placa, serie, marca, modelo, estado, anio_ingreso, observacion, idOficina, idPersona) '
                         . 'VALUES (?,?,?,?,?,?,?,?,?)')) {
@@ -30,9 +35,9 @@ class ManejadorComputadora extends Conexion {
         }
     }
 
-    private function getEquipo($placa) {
+    public function isComputadora($placa) {
         $this->conectar();
-        $sql = 'SELECT placa FROM Equipo WHERE placa =' . $placa;
+        $sql = 'SELECT placa FROM Computadora WHERE placa = ' . $placa;
         $result = $this->getConexion()->query($sql);
         if ($result->num_rows > 0) {
             $this->cerrarConexion();
@@ -53,7 +58,7 @@ class ManejadorComputadora extends Conexion {
             $stmt->bind_param('i', $placa);
             $stmt->execute();
 
-            $stmt->bind_result($pla, $marca, $modelo, $serie, $estado, $observacion, $anioIngreso,  $procesador, $cantMemoria, $criterio, $tipo);
+            $stmt->bind_result($pla, $marca, $modelo, $serie, $estado, $observacion, $anioIngreso, $procesador, $cantMemoria, $criterio, $tipo);
             $computadora = new Computadora();
             $stmt->fetch();
 
@@ -84,7 +89,7 @@ class ManejadorComputadora extends Conexion {
         $sql = "UPDATE Equipo SET observacion = '" . $observacion . "', estado = '" . $estado . "' WHERE placa = " . $placa;
 
         if ($this->getConexion()->query($sql) === TRUE) {
-            
+
             $sql = "UPDATE Computadora SET criterio = '" . $criterio . "' WHERE placa = " . $placa;
 
             if ($this->getConexion()->query($sql) === TRUE) {
@@ -115,4 +120,7 @@ class ManejadorComputadora extends Conexion {
         $this->cerrarConexion();
     }
 
+    public function __destruct() {
+        parent::__destruct();
+    }
 }

@@ -22,6 +22,25 @@ function colocarDatosComputadora(modelo, serie, marca, anioIngreso, procesador, 
     //document.getElementById('tipo').setAttribute('value', tipo);
     document.getElementById('cantMemoria').setAttribute('value', cantMemoria);
     document.getElementById('criterio').setAttribute('value', criterio);
-    //document.getElementById('observacion').setAttribute('value', observacion);
+    document.getElementById('observacion').innerHTML = observacion;
     document.getElementById('estado').setAttribute('value', estado);
+    habilitarCampoComputadoraExistente();
+}
+
+function  habilitarCampoComputadoraExistente() {
+    document.getElementById('idOficina').removeAttribute('readonly');
+    document.getElementById('idPersona').removeAttribute('readonly');
+}
+
+function limpiarCampos() {
+    document.getElementById('modelo').setAttribute('value', "");
+    document.getElementById('serie').setAttribute('value', "");
+    document.getElementById('marca').setAttribute('value', "");
+    //document.getElementById('anioIngreso').setAttribute('value', anioIngreso);
+    document.getElementById('procesador').setAttribute('value', "");
+    //document.getElementById('tipo').setAttribute('value', tipo);
+    document.getElementById('cantMemoria').setAttribute('value', "");
+    document.getElementById('criterio').setAttribute('value', "");
+    document.getElementById('observacion').innerHTML = "";
+    document.getElementById('estado').setAttribute('value', "");
 }

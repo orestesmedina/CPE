@@ -29,5 +29,10 @@ abstract class Conexion {
     public function getConexion() {
         return $this->conexion;
     }
+    
+    public function __destruct() {
+        
+        
+    }
 
 }

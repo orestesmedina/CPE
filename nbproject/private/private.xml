@@ -6,8 +6,11 @@
             <file>file:/var/www/html/cpe.ucr.ac.cr/public/js/metodosAjax.js</file>
             <file>file:/var/www/html/cpe.ucr.ac.cr/model/ajax/manejadores/manejadorAjax.php</file>
             <file>file:/var/www/html/cpe.ucr.ac.cr/control/ajax/buscarComputadora.php</file>
-            <file>file:/var/www/html/cpe.ucr.ac.cr/model/components/Equipo.php</file>
-            <file>file:/var/www/html/cpe.ucr.ac.cr/web/componente/computadora/nuevaComputadora.php</file>
+            <file>file:/var/www/html/cpe.ucr.ac.cr/model/components/manejadores/ManejadorEquipo.php</file>
+            <file>file:/var/www/html/cpe.ucr.ac.cr/model/components/manejadores/ManejadorComputadora.php</file>
+            <file>file:/var/www/html/cpe.ucr.ac.cr/model/components/manejadores/ManejadorTelefono.php</file>
+            <file>file:/var/www/html/cpe.ucr.ac.cr/model/components/manejadores/ManejadorImpresora.php</file>
+            <file>file:/var/www/html/cpe.ucr.ac.cr/model/components/manejadores/ManejadorProyector.php</file>
         </group>
     </open-files>
 </project-private>

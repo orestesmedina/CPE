@@ -211,22 +211,22 @@ $manejadorOficina = new ManejadorOficina();
                                             
                                             <div class="form-group">
                                                 <label>Modelo</label>
-                                                <input type="text" id="modelo" name="modelo" class="form-control" placeholder="Modelo" required  >
+                                                <input type="text" id="modelo" name="modelo" class="form-control" placeholder="Modelo" required  readonly>
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Marca</label>
-                                                <input type="text" id="marca" name="marca" class="form-control" placeholder="Marca" required pattern="[a-zA-z0-9]+" title="Ingrese solo letras o números" >
+                                                <input type="text" id="marca" name="marca" class="form-control" placeholder="Marca" required pattern="[a-zA-z0-9]+" title="Ingrese solo letras o números" readonly>
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Serie</label>
-                                                <input type="text" id="serie" name="serie" class="form-control" placeholder="Serie" required  >
+                                                <input type="text" id="serie" name="serie" class="form-control" placeholder="Serie" required  readonly>
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Tipo</label>
-                                                <select name="tipo" id="tipo" class="form-control">
+                                                <select name="tipo" id="tipo" class="form-control" readonly>
                                                     <option value="laptop">Laptop</option>
                                                     <option value="escritorio">Escritorio</option>
                                                 </select>
@@ -234,12 +234,12 @@ $manejadorOficina = new ManejadorOficina();
 
                                             <div class="form-group">
                                                 <label>Procesador</label>
-                                                <input type="text" id="procesador" name="procesador" class="form-control" placeholder="Procesador" required  >
+                                                <input type="text" id="procesador" name="procesador" class="form-control" placeholder="Procesador" required  readonly>
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Cant. Memoria</label>
-                                                <input type="text" id="cantMemoria" name="cantMemoria" class="form-control" placeholder="Cantidad de memoria" required  >
+                                                <input type="text" id="cantMemoria" name="cantMemoria" class="form-control" placeholder="Cantidad de memoria" required  readonly>
                                             </div>
 
                                         </div>
@@ -247,7 +247,7 @@ $manejadorOficina = new ManejadorOficina();
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Año de ingreso</label>
-                                                <select name="anioIngreso" id="anioIngreso" class="form-control">
+                                                <select name="anioIngreso" id="anioIngreso" class="form-control" readonly>
                                                     <?php
                                                     for ($anio = 1980; $anio <= date("Y"); $anio++) {
                                                         echo '<option value="' . $anio . '">' . $anio . '</option>';
@@ -258,29 +258,29 @@ $manejadorOficina = new ManejadorOficina();
 
                                             <div class="form-group">
                                                 <label>Criterio</label>
-                                                <input type="text" id="criterio" name="criterio" class="form-control" placeholder="Criterio" required >
+                                                <input type="text" id="criterio" name="criterio" class="form-control" placeholder="Criterio" required readonly>
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Estado</label>
-                                                <input type="text" id="estado" name="estado" class="form-control" placeholder="estado" required >
+                                                <input type="text" id="estado" name="estado" class="form-control" placeholder="estado" required readonly>
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Oficina encargada</label>
-                                                <select name="idOficina" class="form-control">
+                                                <select id="idOficina" name="idOficina" class="form-control" readonly>
                                                     <?php $manejadorOficina->getOficinas(); ?>
                                                 </select>
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Persona encargada</label>
-                                                <input type="text" name="idPersona" class="form-control" placeholder="Persona encargada" required >
+                                                <input type="text" id="idPersona" name="idPersona" class="form-control" placeholder="Persona encargada" required readonly>
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Observaciones</label>
-                                                <textarea name="observacion" id="observacion" class="form-control"></textarea>
+                                                <textarea name="observacion" id="observacion" class="form-control" readonly></textarea>
                                             </div>
                                             <button type="submit" class="btn btn-default">Guardar</button>
                                             <button type="reset" class="btn btn-default">Cancelar</button>
