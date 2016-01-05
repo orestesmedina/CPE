@@ -227,8 +227,8 @@ $manejadorOficina = new ManejadorOficina();
                                             <div class="form-group">
                                                 <label>Tipo</label>
                                                 <select name="tipo" id="tipo" class="form-control" readonly>
-                                                    <option value="laptop">Laptop</option>
-                                                    <option value="escritorio">Escritorio</option>
+                                                    <option value="LAPTOP">LAPTOP</option>
+                                                    <option value="ESCRITORIO">ESCRITORIO</option>
                                                 </select>
                                             </div>
 

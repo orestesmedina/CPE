@@ -7,7 +7,7 @@ class ManejadorProyector extends Conexion {
     
     public function isProyector($placa) {
         $this->conectar();
-        $sql = 'SELECT placa FROM proyector WHERE placa = ' . $placa;
+        $sql = 'SELECT placa FROM Proyector WHERE placa = ' . $placa;
         $result = $this->getConexion()->query($sql);
         if ($result->num_rows > 0) {
             $this->cerrarConexion();
