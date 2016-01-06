@@ -2,15 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/var/www/html/cpe.ucr.ac.cr/public/js/metodosAjax.js</file>
-            <file>file:/var/www/html/cpe.ucr.ac.cr/model/ajax/manejadores/manejadorAjax.php</file>
-            <file>file:/var/www/html/cpe.ucr.ac.cr/control/ajax/buscarComputadora.php</file>
-            <file>file:/var/www/html/cpe.ucr.ac.cr/model/components/manejadores/ManejadorEquipo.php</file>
-            <file>file:/var/www/html/cpe.ucr.ac.cr/model/components/manejadores/ManejadorComputadora.php</file>
-            <file>file:/var/www/html/cpe.ucr.ac.cr/model/components/manejadores/ManejadorTelefono.php</file>
-            <file>file:/var/www/html/cpe.ucr.ac.cr/model/components/manejadores/ManejadorImpresora.php</file>
-            <file>file:/var/www/html/cpe.ucr.ac.cr/model/components/manejadores/ManejadorProyector.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

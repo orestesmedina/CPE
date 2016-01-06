@@ -1,33 +1,25 @@
 <?php
 
 class ManejadorComputadora extends Conexion {
+
     public function __construct() {
         parent::__construct();
     }
 
     public function insertarComputadora(Computadora $computadora) {
         try {
-            $manejadorEquipo = new ManejadorEquipo();
 
-            if ($manejadorEquipo->existeEquipo($computadora->getPlaca()) == false) {
-                $this->conectar();
-                if ($stmt = $this->getConexion()->prepare('INSERT INTO Equipo (placa, serie, marca, modelo, estado, anio_ingreso, observacion, idOficina, idPersona) '
-                        . 'VALUES (?,?,?,?,?,?,?,?,?)')) {
-                    $stmt->bind_param('issssssii', $computadora->getPlaca(), $computadora->getSerie(), $computadora->getMarca(), $computadora->getModelo(), $computadora->getEstado(), $computadora->getAnioIngreso(), $computadora->getObservacion(), $computadora->getIdOficina(), $computadora->getIdPersona());
-                    $stmt->execute();
-                    $stmt->close();
-                }
+            $this->conectar();
 
-                if ($stmt = $this->getConexion()->prepare('INSERT INTO Computadora (placa, tipo, procesador, cant_memoria_hhd, criterio) '
-                        . 'VALUES (?,?,?,?,?)')) {
-                    $stmt->bind_param('issss', $computadora->getPlaca(), $computadora->getTipo(), $computadora->getProcesador(), $computadora->getCantMemoriaHhd(), $computadora->getCriterio());
-                    $stmt->execute();
-                    $stmt->close();
-                }
-
+            if ($stmt = $this->getConexion()->prepare('INSERT INTO Computadora (placa, tipo, procesador, cant_memoria_hhd, criterio) '
+                    . 'VALUES (?,?,?,?,?)')) {
+                $stmt->bind_param('issss', $computadora->getPlaca(), $computadora->getTipo(), $computadora->getProcesador(), $computadora->getCantMemoriaHhd(), $computadora->getCriterio());
+                $stmt->execute();
+                $stmt->close();
                 $this->cerrarConexion();
                 return true;
-            } else {
+            } else { 
+                $this->cerrarConexion();
                 return false;
             }
         } catch (Exception $exc) {
@@ -123,4 +115,5 @@ class ManejadorComputadora extends Conexion {
     public function __destruct() {
         parent::__destruct();
     }
+
 }

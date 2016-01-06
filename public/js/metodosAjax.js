@@ -1,7 +1,5 @@
 function buscarComputadora() {
     var idEquipo = document.getElementById('placa').value;
-
-    alert(idEquipo);
     $.ajax({
         type: "POST",
         url: '/CPE/control/ajax/buscarComputadora.php',
@@ -28,9 +26,11 @@ function colocarDatosComputadora(modelo, serie, marca, anioIngreso, procesador, 
 }
 
 function  habilitarCampoComputadoraExistente() {
+    document.getElementById('placa').setAttribute('readonly', 'TRUE');
     document.getElementById('idOficina').removeAttribute('readonly');
     document.getElementById('idPersona').removeAttribute('readonly');
     document.getElementById('observacion').removeAttribute('readonly');
+    document.getElementById('btnGuardar').removeAttribute('disabled');
 }
 
 function limpiarCampos() {
@@ -56,6 +56,7 @@ function seleccionarSelect(select, value)
 }
 
 function desabilitarCampos() {
+    document.getElementById('placa').removeAttribute('readonly');
     document.getElementById('modelo').setAttribute('readonly', 'TRUE');
     document.getElementById('serie').setAttribute('readonly', 'TRUE');
     document.getElementById('marca').setAttribute('readonly', 'TRUE');
@@ -68,9 +69,11 @@ function desabilitarCampos() {
     document.getElementById('estado').setAttribute('readonly', 'TRUE');
     document.getElementById('idOficina').setAttribute('readonly', 'TRUE');
     document.getElementById('idPersona').setAttribute('readonly', 'TRUE');
+    document.getElementById('btnGuardar').setAttribute('disabled', 'TRUE');
 }
 
 function habilitarCampos() {
+    document.getElementById('placa').setAttribute('readonly', 'TRUE');
     document.getElementById('modelo').removeAttribute('readonly');
     document.getElementById('serie').removeAttribute('readonly');
     document.getElementById('marca').removeAttribute('readonly');
@@ -83,4 +86,9 @@ function habilitarCampos() {
     document.getElementById('estado').removeAttribute('readonly');
     document.getElementById('idOficina').removeAttribute('readonly');
     document.getElementById('idPersona').removeAttribute('readonly');
+    document.getElementById('btnGuardar').removeAttribute('disabled');
+}
+
+function recargar() {
+    window.location.href="../../../web/componente/computadora/nuevaComputadora.php";
 }
