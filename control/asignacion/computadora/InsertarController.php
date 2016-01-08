@@ -23,7 +23,6 @@ if (isset($_POST['placa']) && !empty($_POST['placa']) &&
         isset($_POST['idPersona']) && !empty($_POST['idPersona']) &&
         isset($_POST['observacion']) && !empty($_POST['observacion'])) {
 
-    echo '<script language="javascript">alert("dentro controlador.");</script>';
     $placa = $_POST['placa'];
     $modelo = $_POST['modelo'];
     $marca = $_POST['marca'];
@@ -60,11 +59,11 @@ if (isset($_POST['placa']) && !empty($_POST['placa']) &&
     if ($existeEquipo == true) {
         $insertar = $manejadorPrestamoComputadora->insertarPrestamoComputadora($prestamo);
         if ($insertar == true) {
-            echo '<script language="javascript">alert("Préstamo guardado correctamente.");'
-            . 'window.location.href="../../../web/prestamo/computadora/nuevo.php";</script>';
+            echo '<script language="javascript">alert("Asignación realiazada satisfactoriamente.");'
+            . 'window.location.href="../../../web/asignacion/computadora/nuevo.php";</script>';
         } else {
-            echo '<script language="javascript">alert("Error al guardar, el nuevo prestamo.");'
-            . 'window.location.href="../../../web/prestamo/computadora/nuevo.php";</script>';
+            echo '<script language="javascript">alert("Error al asignar computadora.");'
+            . 'window.location.href="../../../web/asignacion/computadora/nuevo.php";</script>';
         }
     } else {
         $computadora = new Computadora();
@@ -85,24 +84,24 @@ if (isset($_POST['placa']) && !empty($_POST['placa']) &&
         if ($manejadorEquipo->insertarEquipo($computadora)) {
             if ($manejadorComputadora->insertarComputadora($computadora)) {
                 if ($manejadorPrestamoComputadora->insertarPrestamoComputadora($prestamo)) {
-                    echo '<script language="javascript">alert("Préstamo guardado correctamente.");'
-                    . 'window.location.href="../../../web/prestamo/computadora/nuevo.php";</script>';
+                    echo '<script language="javascript">alert("Asignación realiazada satisfactoriamente.");'
+                    . 'window.location.href="../../../web/asignacion/computadora/nuevo.php";</script>';
                 } else {
                     echo '<script language="javascript">alert("Error al guardar, presta.");'
-                    . 'window.location.href="../../../web/prestamo/computadora/nuevo.php";</script>';
+                    . 'window.location.href="../../../web/asignacion/computadora/nuevo.php";</script>';
                 }
             } else {
                 echo '<script language="javascript">alert("Error al guardar, computadora.");'
-                . 'window.location.href="../../../web/prestamo/computadora/nuevo.php";</script>';
+                . 'window.location.href="../../../web/asignacion/computadora/nuevo.php";</script>';
             }
         } else {
             echo '<script language="javascript">alert("Error al guardar, el nuevo equipo.");'
-            . 'window.location.href="../../../web/prestamo/computadora/nuevo.php";</script>';
+            . 'window.location.href="../../../web/asignacion/computadora/nuevo.php";</script>';
         }
     }
 } else {
-    echo '<script language="javascript">alert("No paso nada.");'
-    . 'window.location.href="../../../web/componente/computadora/nuevaComputadora.php";</script>';
+    echo '<script language="javascript">alert("Algo salio mal");'
+    . 'window.location.href="../../../web/asignacion/computadora/nuevo.php";</script>';
 }
 
 

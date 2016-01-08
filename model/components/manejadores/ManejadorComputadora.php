@@ -95,20 +95,7 @@ class ManejadorComputadora extends Conexion {
             $this->cerrarConexion();
             return false;
         }
-        /*
-          if($stmt = $this->getConexion()->prepare('UPDATE Equipo SET observacion = ?, estado = ? WHERE placa = ?')){
-          $stmt->bind_param('ssi', $observacion, $estado, $placa);
-          $stmt->execute();
-          $stmt->close();
-          $retornar = true;
-          }
 
-          if($stmt = $this->getConexion()->prepare('UPDATE Computadora SET criterio= ? WHERE placa = ?')){
-          $stmt->bind_param('si', $criterio, $placa);
-          $stmt->execute();
-          $stmt->close();
-          $retornar = true;
-          } */
         $this->cerrarConexion();
     }
 

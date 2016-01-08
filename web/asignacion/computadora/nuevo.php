@@ -28,7 +28,7 @@ $manejadorOficina = new ManejadorOficina();
 
         <!-- Custom Fonts -->
         <link href="../../../public/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-   
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -79,20 +79,18 @@ $manejadorOficina = new ManejadorOficina();
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li>
-                                <a href="#"><i class="fa fa-sitemap fa-fw"></i>Solicitud Componentes<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-sitemap fa-fw"></i>Asignación<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
 
                                     <li>
                                         <a href="#">Computadoras <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="../../../web/componente/computadora/nuevaComputadora.php">Nuevo registro</a>
+                                                <a href="../../../web/asignacion/computadora/nuevo.php">Nuevo</a>
                                             </li>
+
                                             <li>
-                                                <a href="../../../web/componente/computadora/modificarComputadora.php">Modificar registro</a>
-                                            </li>
-                                            <li>
-                                                <a href="../../../web/componente/computadora/eliminarComputadora.php">Eliminar registro</a>
+                                                <a href="../../../web/asignacion/computadora/nuevo.php">Devolver</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -101,13 +99,11 @@ $manejadorOficina = new ManejadorOficina();
                                         <a href="#">Impresoras <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="../../../web/componente/impresora/nuevaImpresora.php">Nuevo registro</a>
+                                                <a href="../../../web/asignacion/impresora/nuevo.php">Nuevo</a>
                                             </li>
+
                                             <li>
-                                                <a href="../../../web/componente/impresora/modificarImpresora.php">Modificar registro</a>
-                                            </li>
-                                            <li>
-                                                <a href="../../../web/componente/impresora/eliminarImpresora.php">Eliminar registro</a>
+                                                <a href="../../../web/asignacion/impresora/devolver.php">Devolver</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -116,13 +112,11 @@ $manejadorOficina = new ManejadorOficina();
                                         <a href="#">Proyectores <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="../../../web/componente/proyector/nuevoProyector.php">Nuevo registro</a>
+                                                <a href="../../../web/asignacion/proyector/nuevo.php">Nuevo</a>
                                             </li>
+
                                             <li>
-                                                <a href="../../../web/componente/proyector/modificarProyector.php">Modificar registro</a>
-                                            </li>
-                                            <li>
-                                                <a href="../../../web/componente/proyector/eliminarProyector.php">Eliminar registro</a>
+                                                <a href="../../../web/asignacion/proyector/devolver.php">Devolver</a>
                                             </li>
 
                                         </ul>
@@ -132,13 +126,11 @@ $manejadorOficina = new ManejadorOficina();
                                         <a href="#">Teléfonos <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="../../../web/componente/telefono/nuevoTelefono.php">Nuevo registro</a>
+                                                <a href="../../../web/asignacion/telefono/nuevo.php">Nuevo</a>
                                             </li>
+
                                             <li>
-                                                <a href="../../../web/componente/telefono/modificarTelefono.php">Modificar registro</a>
-                                            </li>
-                                            <li>
-                                                <a href="../../../web/componente/telefono/eliminarTelefono.php">Eliminar registro</a>
+                                                <a href="../../../web/asignacion/telefono/devolver.php">Devolver</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -147,29 +139,27 @@ $manejadorOficina = new ManejadorOficina();
                                         <a href="#">Otros <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="../../../web/componentes/otros/nuevo.php">Nuevo registro</a>
+                                                <a href="computadora/prestamo/asignacion/nuevo.php">Nuevo préstamo</a>
                                             </li>
+
                                             <li>
-                                                <a href="../../../web/componentes/otros/modificar.php">Modificar registro</a>
-                                            </li>
-                                            <li>
-                                                <a href="../../../web/componentes/otros/eliminar.php">Eliminar registro</a>
+                                                <a href="computadora/prestamo/asignacion/devolver.php">Devolver préstamo</a>
                                             </li>
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="../../../web/consulta/consultar.php"><i class="fa fa-sitemap fa-fw"></i>Consultas y Reportes<span class="fa arrow"></span></a>
+                                <a href="../../asignacion/consulta/consultar.php"><i class="fa fa-sitemap fa-fw"></i>Consultas y Reportes<span class="fa arrow"></span></a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-sitemap fa-fw"></i>Oficinas<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="../../../web/oficina/nueva.php">Nueva Oficina</a>
+                                        <a href="../../asignacion/oficina/nueva.php">Nueva Oficina</a>
                                     </li>
                                     <li>
-                                        <a href="../../../web/oficina/eliminar.php">Eliminar Oficina</a>
+                                        <a href="../../asignacion/oficina/eliminar.php">Eliminar Oficina</a>
                                     </li>
                                 </ul>
                             </li>
@@ -184,7 +174,7 @@ $manejadorOficina = new ManejadorOficina();
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> Nueva computadora</h1>
+                        <h1 class="page-header"> Nueva Asignación</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -193,12 +183,12 @@ $manejadorOficina = new ManejadorOficina();
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Prestamo computadora
+                                Asignación computadora
                             </div>
                             <div class="panel-body">
                                 <div class="row">
 
-                                    <form action="../../../control/components/computadora/InsertarController.php" method="POST" role="form" id="nuevaComputadora">
+                                    <form action="../../../control/asignacion/computadora/InsertarController.php" method="POST" role="form" id="nuevaComputadora">
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Número de placa</label>
@@ -206,9 +196,9 @@ $manejadorOficina = new ManejadorOficina();
                                                 <button type="button" class="btn btn-default" onclick="buscarComputadora();">
                                                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                                                 </button>
-                                                
+
                                             </div>
-                                            
+
                                             <div class="form-group">
                                                 <label>Modelo</label>
                                                 <input type="text" id="modelo" name="modelo" class="form-control" placeholder="Modelo" required  readonly>

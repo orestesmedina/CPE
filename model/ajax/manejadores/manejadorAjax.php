@@ -12,7 +12,7 @@ class ManejadorAjax extends Conexion {
             $this->cerrarConexion();
             echo '<script>limpiarCampos();</script>';
             echo '<script>desabilitarCampos();</script>';
-            $this->imprimirMensaje("El componente se encuentra en prestamo.");
+            $this->imprimirMensaje("El componente ya se encuentra asignado.");
         } else {
             $this->cerrarConexion();
             $manejadorEquipo = new ManejadorEquipo();
@@ -28,19 +28,19 @@ class ManejadorAjax extends Conexion {
                     if ($manejadorImpresora->isImpresora($placa)== true) {
                         echo '<script>limpiarCampos();</script>';
                         echo '<script>desabilitarCampos();</script>';
-                        $this->imprimirMensaje("El componente se encuentra disponible pero no es una computadora. Por favor seleccione la opción (Prestamo Impresora).");
+                        $this->imprimirMensaje("El componente se encuentra disponible pero no es una computadora. Por favor seleccione la opción (Asignación Impresora).");
                     } else {
                         $manejadorProyector= new ManejadorProyector();
                         if ($manejadorProyector->isProyector($placa )== true) {
                             echo '<script>limpiarCampos();</script>';
                             echo '<script>desabilitarCampos();</script>';
-                            $this->imprimirMensaje("El componente se encuentra disponible pero no es una computadora. Por favor seleccione la opción (Prestamo Proyector).");
+                            $this->imprimirMensaje("El componente se encuentra disponible pero no es una computadora. Por favor seleccione la opción (Asignación Proyector).");
                         } else {
                             $manejadorTelefono = new ManejadorTelefono();
                             if ($manejadorTelefono->isTelefono($placa )== true) {
                                 echo '<script>limpiarCampos();</script>';
                                 echo '<script>desabilitarCampos();</script>';
-                                $this->imprimirMensaje("El componente se encuentra disponible pero no es una computadora. Por favor seleccione la opción (Prestamo Teléfono).");
+                                $this->imprimirMensaje("El componente se encuentra disponible pero no es una computadora. Por favor seleccione la opción (Asignación Teléfono).");
                             }
                         }
                     }

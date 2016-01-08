@@ -78,13 +78,13 @@
                                     <a href="#">Computadoras <span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
-                                            <a href="../../web/componente/computadora/nuevaComputadora.php">Nuevo registro</a>
+                                            <a href="../asignacion/componente/computadora/nuevaComputadora.php">Nuevo registro</a>
                                         </li>
                                         <li>
-                                            <a href="../../web/componente/computadora/modificarComputadora.php">Modificar registro</a>
+                                            <a href="../asignacion/componente/computadora/modificarComputadora.php">Modificar registro</a>
                                         </li>
                                         <li>
-                                            <a href="../../web/componente/computadora/eliminarComputadora.php">Eliminar registro</a>
+                                            <a href="../asignacion/componente/computadora/eliminarComputadora.php">Eliminar registro</a>
                                         </li>
                                     </ul>
                                     <!-- /.nav-third-level -->
@@ -93,13 +93,13 @@
                                     <a href="#">Impresoras <span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
-                                            <a href="../../web/componente/impresora/nuevaImpresora.php">Nuevo registro</a>
+                                            <a href="../asignacion/componente/impresora/nuevaImpresora.php">Nuevo registro</a>
                                         </li>
                                         <li>
-                                            <a href="../../web/componente/impresora/modificarImpresora.php">Modificar registro</a>
+                                            <a href="../asignacion/componente/impresora/modificarImpresora.php">Modificar registro</a>
                                         </li>
                                         <li>
-                                            <a href="../../web/componente/impresora/eliminarImpresora.php">Eliminar registro</a>
+                                            <a href="../asignacion/componente/impresora/eliminarImpresora.php">Eliminar registro</a>
                                         </li>
                                     </ul>
                                     <!-- /.nav-third-level -->
@@ -108,13 +108,13 @@
                                     <a href="#">Proyectores <span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
-                                            <a href="../../web/componente/proyector/nuevoProyector.php">Nuevo registro</a>
+                                            <a href="../asignacion/componente/proyector/nuevoProyector.php">Nuevo registro</a>
                                         </li>
                                         <li>
-                                            <a href="../../web/componente/proyector/modificarProyector.php">Modificar registro</a>
+                                            <a href="../asignacion/componente/proyector/modificarProyector.php">Modificar registro</a>
                                         </li>
                                         <li>
-                                            <a href="../../web/componente/proyector/eliminarProyector.php">Eliminar registro</a>
+                                            <a href="../asignacion/componente/proyector/eliminarProyector.php">Eliminar registro</a>
                                         </li>
 
                                     </ul>
@@ -124,13 +124,13 @@
                                     <a href="#">Teléfonos <span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
-                                            <a href="../../web/componente/telefono/nuevoTelefono.php">Nuevo registro</a>
+                                            <a href="../asignacion/componente/telefono/nuevoTelefono.php">Nuevo registro</a>
                                         </li>
                                         <li>
-                                            <a href="../../web/componente/telefono/modificarTelefono.php">Modificar registro</a>
+                                            <a href="../asignacion/componente/telefono/modificarTelefono.php">Modificar registro</a>
                                         </li>
                                         <li>
-                                            <a href="../../web/componente/telefono/eliminarTelefono.php">Eliminar registro</a>
+                                            <a href="../asignacion/componente/telefono/eliminarTelefono.php">Eliminar registro</a>
                                         </li>
                                     </ul>
                                     <!-- /.nav-third-level -->
@@ -152,16 +152,16 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="../../web/consulta/consultar.php"><i class="fa fa-sitemap fa-fw"></i>Consultas y Reportes<span class="fa arrow"></span></a>
+                            <a href="../asignacion/consulta/consultar.php"><i class="fa fa-sitemap fa-fw"></i>Consultas y Reportes<span class="fa arrow"></span></a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i>Oficinas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="../../web/oficina/nueva.php">Nueva Oficina</a>
+                                            <a href="oficina/asignacion/nueva.php">Nueva Oficina</a>
                                         </li>
                                         <li>
-                                            <a href="../../web/oficina/eliminar.php">Eliminar Oficina</a>
+                                            <a href="oficina/asignacion/eliminar.php">Eliminar Oficina</a>
                                         </li>
                             </ul>
                         </li>

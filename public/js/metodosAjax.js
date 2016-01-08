@@ -90,5 +90,5 @@ function habilitarCampos() {
 }
 
 function recargar() {
-    window.location.href="../../../web/componente/computadora/nuevaComputadora.php";
+    window.location.href="../../../web/asignacion/computadora/nuevo.php";
 }
