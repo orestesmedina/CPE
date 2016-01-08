@@ -7,7 +7,7 @@ require '../../../model/components/manejadores/ManejadorComputadora.php';
 
 if (isset($_POST['placa'])) {
     $manejadorComputadora = new ManejadorComputadora();
-    $computadora = $manejadorComputadora->buscarComputadora($_POST['placa']);
+    $computadora = $manejadorComputadora->getComputadora($_POST['placa']);
     if ($computadora != false) {
         require '../../../web/componente/computadora/modificar.php';
     } else {

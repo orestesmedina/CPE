@@ -1,6 +1,6 @@
 <?php
 
-class Prestamo {
+class Asignacion {
 
     private $placa;
     private $idOficina;

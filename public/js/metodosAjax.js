@@ -11,6 +11,19 @@ function buscarComputadora() {
 
 }
 
+function buscarTelefono() {
+    var idEquipo = document.getElementById('placa').value;
+    $.ajax({
+        type: "POST",
+        url: '/CPE/control/ajax/buscarTelefono.php',
+        data: {'placa': idEquipo},
+        success: function (data) {
+            $('#texto').html(data);
+        }
+    });
+
+}
+
 function colocarDatosComputadora(modelo, serie, marca, anioIngreso, procesador, tipo, cantMemoria, criterio, observacion, estado) {
     document.getElementById('modelo').setAttribute('value', modelo);
     document.getElementById('serie').setAttribute('value', serie);
@@ -91,4 +104,8 @@ function habilitarCampos() {
 
 function recargar() {
     window.location.href="../../../web/asignacion/computadora/nuevo.php";
+}
+
+function recargarTelefono() {
+        window.location.href="../../../web/asignacion/telefono/nuevo.php";
 }

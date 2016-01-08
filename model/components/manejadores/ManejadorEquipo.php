@@ -32,15 +32,15 @@ class ManejadorEquipo extends Conexion {
         }
     }
 
-    public function insertarEquipo(Computadora $computadora) {
+    public function insertarEquipo(Equipo $equipo, $tipo) {
 
         $this->conectar();
-        $tipo = 'COMPUTADORA';
+
         if ($stmt = $this->getConexion()->prepare('INSERT INTO Equipo (placa, serie, marca, modelo, estado, anio_ingreso, observacion, tipoEquipo) '
                 . 'VALUES (?,?,?,?,?,?,?,?)')) {
-            $stmt->bind_param('issssiss', $computadora->getPlaca(), $computadora->getSerie(), $computadora->getMarca(),
-                    $computadora->getModelo(), $computadora->getEstado(), $computadora->getAnioIngreso(),
-                    $computadora->getObservacion(), $tipo);
+            $stmt->bind_param('issssiss', $equipo->getPlaca(), $equipo->getSerie(), $equipo->getMarca(),
+                    $equipo->getModelo(), $equipo->getEstado(), $equipo->getAnioIngreso(),
+                    $equipo->getObservacion(), $tipo);
             $stmt->execute();
             $stmt->close();
             return true;

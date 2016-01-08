@@ -19,7 +19,6 @@ class ManejadorImpresora extends Conexion {
         }
     }
 
-
     public function __destruct() {
         parent::__destruct();
     }

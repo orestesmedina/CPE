@@ -1,13 +1,13 @@
 <?php
-abstract class Equipo {
+class Equipo {
 	
-	protected $placa;
-	protected $modelo;
-	protected $marca;
-	protected $serie;
-	protected $observacion;
-	protected $estado;
-	protected $anioIngreso;
+	private $placa;
+	private $modelo;
+	private $marca;
+	private $serie;
+	private $observacion;
+	private $estado;
+	private $anioIngreso;
 	
 	public function __construct(){
 		

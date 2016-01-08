@@ -1,8 +1,8 @@
 <?php
 
-class ManejadorPrestamoComputadora extends Conexion {
+class ManejadorAsignacion extends Conexion {
 
-    public function insertarPrestamoComputadora(Prestamo $prestamo) {
+    public function insertarAsignacion(Asignacion $prestamo) {
         try {
 
             $this->conectar();

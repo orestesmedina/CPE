@@ -40,7 +40,7 @@ class ManejadorComputadora extends Conexion {
         }
     }
 
-    public function buscarComputadora($placa) {
+    public function getComputadora($placa) {
 
         $this->conectar();
         if ($stmt = $this->getConexion()->prepare('SELECT Equipo.placa, Equipo.marca, Equipo.modelo, Equipo.serie,'
@@ -51,20 +51,20 @@ class ManejadorComputadora extends Conexion {
             $stmt->execute();
 
             $stmt->bind_result($pla, $marca, $modelo, $serie, $estado, $observacion, $anioIngreso, $procesador, $cantMemoria, $criterio, $tipo);
-            $computadora = new Computadora();
             $stmt->fetch();
+            
+            $computadora['placa'] = $pla;
+            $computadora['marca'] = $marca;
+            $computadora['modelo'] = $modelo;
+            $computadora['serie'] = $serie;
+            $computadora['cantMemoria'] = $cantMemoria;
+            $computadora['criterio'] = $criterio;
+            $computadora['estado'] = $estado;
+            $computadora['anioIngreso'] = $anioIngreso;
+            $computadora['observacion'] = $observacion;
+            $computadora['procesador'] = $procesador;
+            $computadora['tipo'] = $tipo;
 
-            $computadora->setPlaca($pla);
-            $computadora->setMarca($marca);
-            $computadora->setModelo($modelo);
-            $computadora->setSerie($serie);
-            $computadora->setCantMemoriaHhd($cantMemoria);
-            $computadora->setCriterio($criterio);
-            $computadora->setEstado($estado);
-            $computadora->setAnioIngreso($anioIngreso);
-            $computadora->setObservacion($observacion);
-            $computadora->setProcesador($procesador);
-            $computadora->setTipo($tipo);
             $this->cerrarConexion();
             $stmt->close();
             return $computadora;

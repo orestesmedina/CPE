@@ -15,6 +15,6 @@ if (isset($_POST['placa']) && !empty($_POST['placa'])) {
     
 
     $manejadorAjax = new ManejadorAjax();
-    $computadora = $manejadorAjax->buscarAsignacionComputadora($_POST['placa']);
+    $computadora = $manejadorAjax->buscarAsignacionTelefono($_POST['placa']);
 
 }
