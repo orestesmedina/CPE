@@ -59,6 +59,7 @@ if (isset($_POST['placa']) && !empty($_POST['placa']) &&
     if ($existeEquipo == true) {
         $insertar = $manejadorAsignacion->insertarAsignacion($asignacion);
         if ($insertar == true) {
+            $insertarEquipo = $manejadorEquipo->modificarEstadoObservacion($estado, $observacion, $placa);
             echo '<script language="javascript">alert("Asignación realiazada satisfactoriamente.");'
             . 'window.location.href="../../../web/asignacion/computadora/nuevo.php";</script>';
         } else {

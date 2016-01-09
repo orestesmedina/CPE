@@ -18,6 +18,22 @@ class ManejadorTelefono extends Conexion {
             return false;
         }
     }
+    
+    public function modificarExtension($extension, $placa) {
+        $this->conectar();
+        $stmt = $this->getConexion()->prepare('UPDATE Telefonia set extension = ? WHERE placa = ?');
+        
+        if($stmt) {
+            $stmt->bind_param('si', $extension, $placa);
+            $stmt->execute();
+            $stmt->close();
+            $this->cerrarConexion();
+            return true;
+        } else {
+            $this->cerrarConexion();
+            return false;
+        }
+    }
 
     public function insertarTelefono(Telefono $telefono) {
         try {

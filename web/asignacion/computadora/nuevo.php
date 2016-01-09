@@ -273,7 +273,7 @@ $manejadorOficina = new ManejadorOficina();
                                                 <textarea name="observacion" id="observacion" class="form-control" readonly></textarea>
                                             </div>
                                             <button type="submit" class="btn btn-default" disabled id="btnGuardar">Guardar</button>
-                                            <button type="reset" class="btn btn-default" onclick="recargar()">Cancelar</button>
+                                            <button type="reset" class="btn btn-default" onclick="recargarComputadora()">Cancelar</button>
                                         </div>
                                     </form>
                                     <div id="texto"></div>

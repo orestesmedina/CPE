@@ -53,6 +53,9 @@ if (isset($_POST['placa']) && !empty($_POST['placa']) &&
     if ($existeEquipo == true) {
         $insertar = $manejadorAsignacion->insertarAsignacion($asignacion);
         if ($insertar == true) {
+            $ModificarEquipo = $manejadorEquipo->modificarEstadoObservacion($estado, $observacion, $placa);
+            $manejadorTelefono = new ManejadorTelefono();
+            $modificarTelefono = $manejadorTelefono->modificarExtension($extension, $placa);
             echo '<script language="javascript">alert("Asignación realiazada satisfactoriamente.");'
             . 'window.location.href="../../../web/asignacion/telefono/nuevo.php";</script>';
         } else {
@@ -76,7 +79,7 @@ if (isset($_POST['placa']) && !empty($_POST['placa']) &&
         
         $manejadorTelefono = new ManejadorTelefono();
 
-        if ($manejadorEquipo->insertarEquipo($equipo)) {
+        if ($manejadorEquipo->insertarEquipo($equipo, $tipoEquipo)) {
             if ($manejadorTelefono->insertarTelefono($telefono)) {
                 if ($manejadorAsignacion->insertarAsignacion($asignacion)) {
                     echo '<script language="javascript">alert("Asignación realiazada satisfactoriamente.");'
