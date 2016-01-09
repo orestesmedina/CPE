@@ -150,7 +150,21 @@ $manejadorOficina = new ManejadorOficina();
                                 </ul>
                             </li>
                             <li>
-                                <a href="../../asignacion/consulta/consultar.php"><i class="fa fa-sitemap fa-fw"></i>Consultas y Reportes<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-sitemap fa-fw"></i>Consultas<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="../../../web/consulta/computadora.php">Computadora</a>
+                                    </li>
+                                    <li>
+                                        <a href="../../../web/consulta/impresora.php">Impresora</a>
+                                    </li>
+                                    <li>
+                                        <a href="../../../web/consulta/telefono.php">Telefono</a>
+                                    </li>
+                                    <li>
+                                        <a href="../../../web/consulta/proyector.php">Proyector</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-sitemap fa-fw"></i>Oficinas<span class="fa arrow"></span></a>

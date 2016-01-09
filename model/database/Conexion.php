@@ -1,12 +1,12 @@
 <?php
 
-abstract class Conexion {
+class Conexion {
 
-    protected $password;
-    protected $userName;
-    protected $serverName;
-    protected $dbName;
-    protected $conexion;
+    private $password;
+    private $userName;
+    private $serverName;
+    private $dbName;
+    private $conexion;
 
     public function __construct() {
         $this->dbName = 'CPE';
