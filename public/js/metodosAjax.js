@@ -2,7 +2,33 @@ function buscarComputadora() {
     var idEquipo = document.getElementById('placa').value;
     $.ajax({
         type: "POST",
-        url: '/CPE/control/ajax/buscarComputadora.php',
+        url: '/CPE/control/ajax/BuscarComputadora.php',
+        data: {'placa': idEquipo},
+        success: function (data) {
+            $('#texto').html(data);
+        }
+    });
+
+}
+
+function buscarImpresora() {
+    var idEquipo = document.getElementById('placa').value;
+    $.ajax({
+        type: "POST",
+        url: '/CPE/control/ajax/BuscarImpresora.php',
+        data: {'placa': idEquipo},
+        success: function (data) {
+            $('#texto').html(data);
+        }
+    });
+
+}
+
+function buscarProyector() {
+    var idEquipo = document.getElementById('placa').value;
+    $.ajax({
+        type: "POST",
+        url: '/CPE/control/ajax/BuscarProyector.php',
         data: {'placa': idEquipo},
         success: function (data) {
             $('#texto').html(data);
@@ -15,7 +41,7 @@ function buscarTelefono() {
     var idEquipo = document.getElementById('placa').value;
     $.ajax({
         type: "POST",
-        url: '/CPE/control/ajax/buscarTelefono.php',
+        url: '/CPE/control/ajax/BuscarTelefono.php',
         data: {'placa': idEquipo},
         success: function (data) {
             $('#texto').html(data);
@@ -29,6 +55,15 @@ function colocarDatosComputadora(procesador, tipo, cantMemoria, criterio) {
     seleccionarSelect('tipo', tipo);
     document.getElementById('cantMemoria').setAttribute('value', cantMemoria);
     document.getElementById('criterio').setAttribute('value', criterio);
+}
+
+function colocarDatosImpresora(consumible, tipo) {
+    document.getElementById('consumible').setAttribute('value', consumible);
+    seleccionarSelect('tipo', tipo);
+}
+
+function colocarDatosProyector(funcionalidad) {
+    document.getElementById('funcionalidad').setAttribute('value', funcionalidad);
 }
 
 function colocarDatosEquipo(modelo, serie, marca, anioIngreso, observacion, estado) {
@@ -69,8 +104,17 @@ function habilitarCamposComputadora() {
     document.getElementById('criterio').removeAttribute('readonly');
 }
 
+function habilitarCamposImpresora() {
+    document.getElementById('consumible').removeAttribute('readonly');
+    document.getElementById('tipo').removeAttribute('readonly');
+}
+
 function habilitarCamposTelefono() {
     document.getElementById('extension').removeAttribute('readonly');
+}
+
+function habilitarCamposProyector() {
+    document.getElementById('funcionalidad').removeAttribute('readonly');
 }
 
 function limpiarCamposEquipo() {
@@ -89,8 +133,17 @@ function limpiarCamposComputadora() {
     document.getElementById('criterio').setAttribute('value', "");
 }
 
+function limpiarCamposImpresora() {
+    document.getElementById('consumible').setAttribute('value', "");
+    document.getElementById('tipo').selectedIndex = 0;
+}
+
 function limpiarCamposTelefono() {
     document.getElementById('extension').setAttribute('value', '');
+}
+
+function limpiarCamposProyector() {
+    document.getElementById('funcionalidad').setAttribute('value', '');
 }
 
 function limpiarCamposAsignacion() {
@@ -127,6 +180,11 @@ function deshabilitarCamposComputadora() {
     document.getElementById('criterio').setAttribute('readonly', 'TRUE');
 }
 
+function deshabilitarCamposImpresora() {
+    document.getElementById('consumible').setAttribute('readonly', 'TRUE');
+    document.getElementById('tipo').setAttribute('readonly', 'TRUE');
+}
+
 function deshabilitarCamposAsignacion() {
     document.getElementById('observacion').setAttribute('readonly', 'TRUE');
     document.getElementById('estado').setAttribute('readonly', 'TRUE');
@@ -139,10 +197,22 @@ function deshabilitarCamposTelefono() {
     document.getElementById('extension').setAttribute('readonly', 'TRUE');
 }
 
+function deshabilitarCamposProyector() {
+    document.getElementById('funcionalidad').setAttribute('readonly', 'TRUE');
+}
+
 function recargarComputadora() {
     window.location.href="../../../web/asignacion/computadora/nuevo.php";
 }
 
 function recargarTelefono() {
         window.location.href="../../../web/asignacion/telefono/nuevo.php";
+}
+
+function recargarImpresora() {
+        window.location.href="../../../web/asignacion/impresora/nuevo.php";
+}
+
+function recargarProyector() {
+        window.location.href="../../../web/asignacion/proyector/nuevo.php";
 }

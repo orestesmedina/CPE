@@ -35,21 +35,21 @@ class ManejadorAjax extends Conexion {
                     $manejadorImpresora = new ManejadorImpresora();
                     if ($manejadorImpresora->isImpresora($placa) == true) {
                         echo '<script>limpiarCamposEquipo();</script>';
-                                echo '<script>limpiarCamposComputadora();</script>';
-                                echo '<script>limpiarCamposAsignacion();</script>';
-                                echo '<script>deshabilitarCamposEquipo();</script>';
-                                echo '<script>deshabilitarCamposComputadora();</script>';
-                                echo '<script>deshabilitarCamposAsignacion();</script>';
+                        echo '<script>limpiarCamposComputadora();</script>';
+                        echo '<script>limpiarCamposAsignacion();</script>';
+                        echo '<script>deshabilitarCamposEquipo();</script>';
+                        echo '<script>deshabilitarCamposComputadora();</script>';
+                        echo '<script>deshabilitarCamposAsignacion();</script>';
                         $this->imprimirMensaje("El componente se encuentra disponible pero no es una computadora. Por favor seleccione la opción (Asignación Impresora).");
                     } else {
                         $manejadorProyector = new ManejadorProyector();
                         if ($manejadorProyector->isProyector($placa) == true) {
                             echo '<script>limpiarCamposEquipo();</script>';
-                                echo '<script>limpiarCamposComputadora();</script>';
-                                echo '<script>limpiarCamposAsignacion();</script>';
-                                echo '<script>deshabilitarCamposEquipo();</script>';
-                                echo '<script>deshabilitarCamposComputadora();</script>';
-                                echo '<script>deshabilitarCamposAsignacion();</script>';
+                            echo '<script>limpiarCamposComputadora();</script>';
+                            echo '<script>limpiarCamposAsignacion();</script>';
+                            echo '<script>deshabilitarCamposEquipo();</script>';
+                            echo '<script>deshabilitarCamposComputadora();</script>';
+                            echo '<script>deshabilitarCamposAsignacion();</script>';
                             $this->imprimirMensaje("El componente se encuentra disponible pero no es una computadora. Por favor seleccione la opción (Asignación Proyector).");
                         } else {
                             $manejadorTelefono = new ManejadorTelefono();
@@ -174,6 +174,174 @@ class ManejadorAjax extends Conexion {
         . $telefono['observacion'] . '", "'
         . $telefono['estado'] . '");</script>';
         echo '<script> colocarDatosTelefono("' . $telefono['extension'] . '");</script>';
+    }
+
+    public function buscarAsignacionImpresora($placa) {
+        $this->conectar();
+        $sql = 'SELECT placa FROM Prestamo WHERE placa = ' . $placa . ' and estado = 1 ';
+        $result = $this->getConexion()->query($sql);
+
+        if ($result->num_rows > 0) {
+            $this->cerrarConexion();
+            echo '<script>limpiarCamposEquipo();</script>';
+            echo '<script>limpiarCamposImpresora();</script>';
+            echo '<script>limpiarCamposAsignacion();</script>';
+            echo '<script>deshabilitarCamposEquipo();</script>';
+            echo '<script>deshabilitarCamposImpresora();</script>';
+            echo '<script>deshabilitarCamposAsignacion();</script>';
+            $this->imprimirMensaje("El componente ya se encuentra asignado.");
+        } else {
+            $this->cerrarConexion();
+            $manejadorEquipo = new ManejadorEquipo();
+            if ($manejadorEquipo->existeEquipo($placa) == true) {
+                $manejadorImpresora = new ManejadorImpresora();
+                if ($manejadorImpresora->isImpresora($placa) == true) {
+                    $telefono = $manejadorImpresora->getImpresora($placa);
+                    echo '<script>limpiarCamposEquipo();</script>';
+                    echo '<script>limpiarCamposImpresora();</script>';
+                    echo '<script>limpiarCamposAsignacion();</script>';
+                    echo '<script>deshabilitarCamposEquipo();</script>';
+                    echo '<script>habilitarCamposAsignacion();</script>';
+                    // echo '<script>habilitarCamposImpresora();</script>';
+                    $this->imprimirImpresora($telefono);
+                } else {
+                    $manejadorTelefono = new ManejadorTelefono();
+                    if ($manejadorTelefono->isTelefono($placa) == true) {
+                        echo '<script>limpiarCamposEquipo();</script>';
+                        echo '<script>limpiarCamposImpresora();</script>';
+                        echo '<script>limpiarCamposAsignacion();</script>';
+                        echo '<script>deshabilitarCamposEquipo();</script>';
+                        echo '<script>deshabilitarCamposImpresora();</script>';
+                        echo '<script>deshabilitarCamposAsignacion();</script>';
+                        $this->imprimirMensaje("El componente se encuentra disponible pero no es una computadora. Por favor seleccione la opción (Asignación Teléfono).");
+                    } else {
+                        $manejadorProyector = new ManejadorProyector();
+                        if ($manejadorProyector->isProyector($placa) == true) {
+                            echo '<script>limpiarCamposEquipo();</script>';
+                            echo '<script>limpiarCamposImpresora();</script>';
+                            echo '<script>limpiarCamposAsignacion();</script>';
+                            echo '<script>deshabilitarCamposEquipo();</script>';
+                            echo '<script>deshabilitarCamposImpresora();</script>';
+                            echo '<script>deshabilitarCamposAsignacion();</script>';
+                            $this->imprimirMensaje("El componente se encuentra disponible pero no es una computadora. Por favor seleccione la opción (Asignación Proyector).");
+                        } else {
+                            $manejadorComputadora = new ManejadorComputadora();
+                            if ($manejadorComputadora->isComputadora($placa) == true) {
+                                echo '<script>limpiarCamposEquipo();</script>';
+                                echo '<script>limpiarCamposImpresora();</script>';
+                                echo '<script>limpiarCamposAsignacion();</script>';
+                                echo '<script>deshabilitarCamposEquipo();</script>';
+                                echo '<script>deshabilitarCamposImpresora();</script>';
+                                echo '<script>deshabilitarCamposAsignacion();</script>';
+                                $this->imprimirMensaje("El componente se encuentra disponible pero no es una computadora. Por favor seleccione la opción (Asignación Computadora).");
+                            }
+                        }
+                    }
+                }
+            } else {
+                echo '<script>limpiarCamposEquipo();</script>';
+                echo '<script>limpiarCamposImpresora();</script>';
+                echo '<script>limpiarCamposAsignacion();</script>';
+                echo '<script>habilitarCamposEquipo();</script>';
+                echo '<script>habilitarCamposImpresora();</script>';
+                echo '<script>habilitarCamposAsignacion();</script>';
+            }
+        }
+    }
+
+    private function imprimirImpresora($impresora) {
+        echo '<script> colocarDatosEquipo("' . $impresora['modelo'] . '", "'
+        . $impresora['serie'] . '", "'
+        . $impresora['marca'] . '", "'
+        . $impresora['anioIngreso'] . '", "'
+        . $impresora['observacion'] . '", "'
+        . $impresora['estado'] . '");</script>';
+        echo '<script> colocarDatosImpresora("' . $impresora['consumible'] . '", "'
+        . $impresora['tipo'] . '");</script>';
+    }
+
+    public function buscarAsignacionProyector($placa) {
+        $this->conectar();
+        $sql = 'SELECT placa FROM Prestamo WHERE placa = ' . $placa . ' and estado = 1 ';
+
+        $result = $this->getConexion()->query($sql);
+
+        if ($result->num_rows > 0) {
+            $this->cerrarConexion();
+            echo '<script>limpiarCamposEquipo();</script>';
+            echo '<script>limpiarCamposProyector();</script>';
+            echo '<script>limpiarCamposAsignacion();</script>';
+            echo '<script>deshabilitarCamposEquipo();</script>';
+            echo '<script>deshabilitarCamposProyector();</script>';
+            echo '<script>deshabilitarCamposAsignacion();</script>';
+            $this->imprimirMensaje("El componente ya se encuentra asignado.");
+        } else {
+            $this->cerrarConexion();
+            $manejadorEquipo = new ManejadorEquipo();
+            if ($manejadorEquipo->existeEquipo($placa) == true) {
+                $manejadorProyector = new ManejadorProyector();
+                if ($manejadorProyector->isProyector($placa) == true) {
+                    $proyector = $manejadorProyector->getProyector($placa);
+                    echo '<script>limpiarCamposEquipo();</script>';
+                    echo '<script>limpiarCamposProyector();</script>';
+                    echo '<script>limpiarCamposAsignacion();</script>';
+                    echo '<script>deshabilitarCamposEquipo();</script>';
+                    echo '<script>habilitarCamposAsignacion();</script>';
+                    echo '<script>deshabilitarCamposProyector();</script>';
+                    $this->imprimirProyector($proyector);
+                } else {
+                    $manejadorImpresora = new ManejadorImpresora();
+                    if ($manejadorImpresora->isImpresora($placa) == true) {
+                        echo '<script>limpiarCamposEquipo();</script>';
+                        echo '<script>limpiarCamposComputadora();</script>';
+                        echo '<script>limpiarCamposAsignacion();</script>';
+                        echo '<script>deshabilitarCamposEquipo();</script>';
+                        echo '<script>deshabilitarCamposComputadora();</script>';
+                        echo '<script>deshabilitarCamposAsignacion();</script>';
+                        $this->imprimirMensaje("El componente se encuentra disponible pero no es una computadora. Por favor seleccione la opción (Asignación Impresora).");
+                    } else {
+                        $manejadorComputadora = new ManejadorComputadora();
+                        if ($manejadorComputadora->isComputadora($placa) == true) {
+                            echo '<script>limpiarCamposEquipo();</script>';
+                            echo '<script>limpiarCamposProyector();</script>';
+                            echo '<script>limpiarCamposAsignacion();</script>';
+                            echo '<script>deshabilitarCamposEquipo();</script>';
+                            echo '<script>deshabilitarCamposProyector();</script>';
+                            echo '<script>deshabilitarCamposAsignacion();</script>';
+                            $this->imprimirMensaje("El componente se encuentra disponible pero no es una computadora. Por favor seleccione la opción (Asignación Computadora).");
+                        } else {
+                            $manejadorTelefono = new ManejadorTelefono();
+                            if ($manejadorTelefono->isTelefono($placa) == true) {
+                                echo '<script>limpiarCamposEquipo();</script>';
+                                echo '<script>limpiarCamposProyector();</script>';
+                                echo '<script>limpiarCamposAsignacion();</script>';
+                                echo '<script>deshabilitarCamposEquipo();</script>';
+                                echo '<script>deshabilitarCamposProyector();</script>';
+                                echo '<script>deshabilitarCamposAsignacion();</script>';
+                                $this->imprimirMensaje("El componente se encuentra disponible pero no es una computadora. Por favor seleccione la opción (Asignación Teléfono).");
+                            }
+                        }
+                    }
+                }
+            } else {
+                echo '<script>limpiarCamposEquipo();</script>';
+                echo '<script>limpiarCamposProyector();</script>';
+                echo '<script>limpiarCamposAsignacion();</script>';
+                echo '<script>habilitarCamposEquipo();</script>';
+                echo '<script>habilitarCamposProyector();</script>';
+                echo '<script>habilitarCamposAsignacion();</script>';
+            }
+        }
+    }
+
+    private function imprimirProyector($proyector) {
+        echo '<script> colocarDatosEquipo("' . $proyector['modelo'] . '", "'
+        . $proyector['serie'] . '", "'
+        . $proyector['marca'] . '", "'
+        . $proyector['anioIngreso'] . '", "'
+        . $proyector['observacion'] . '", "'
+        . $proyector['estado'] . '");</script>';
+        echo '<script> colocarDatosProyector("' . $proyector['funcionalidad'] . '");</script>';
     }
 
 }

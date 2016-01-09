@@ -183,17 +183,17 @@ $manejadorOficina = new ManejadorOficina();
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Asignación Impresora
+                                Asignación Proyector
                             </div>
                             <div class="panel-body">
                                 <div class="row">
 
-                                    <form action="../../../control/asignacion/impresora/InsertarController.php" method="POST" role="form" id="nuevaComputadora">
+                                    <form action="../../../control/asignacion/proyector/InsertarController.php" method="POST" role="form" id="nuevaComputadora">
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Número de placa</label>
                                                 <input type="text" id="placa" name="placa" class="form-control" placeholder="Número de placa"  required pattern="[0-9]{1,10}" maxlength="10" title="ingrese solo números, mínimo once digitos">
-                                                <button type="button" class="btn btn-default" onclick="buscarImpresora();">
+                                                <button type="button" class="btn btn-default" onclick="buscarProyector();">
                                                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                                                 </button>
 
@@ -214,18 +214,10 @@ $manejadorOficina = new ManejadorOficina();
                                                 <input type="text" id="serie" name="serie" class="form-control" placeholder="Serie" required  readonly>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label>Tipo</label>
-                                                <select name="tipo" id="tipo" class="form-control" readonly>
-                                                    <option value="LASER">LASER</option>
-                                                    <option value="INYECCION">INYECCION</option>
-                                                    <option value="MULTIFUNCIONAL">MULTIFUNCIONAL</option>
-                                                </select>
-                                            </div>
                                             
                                             <div class="form-group">
-                                                <label>Consumible</label>
-                                                <input type="text" id="consumible" name="consumible" class="form-control" placeholder="consumible" required readonly>
+                                                <label>Funcionalidad</label>
+                                                <input type="text" id="funcionalidad" name="funcionalidad" class="form-control" placeholder="Funcionalidad" required readonly>
                                             </div>
 
                                         </div>
@@ -264,7 +256,7 @@ $manejadorOficina = new ManejadorOficina();
                                                 <textarea name="observacion" id="observacion" class="form-control" readonly></textarea>
                                             </div>
                                             <button type="submit" class="btn btn-default" disabled id="btnGuardar">Guardar</button>
-                                            <button type="reset" class="btn btn-default" onclick="recargarImpresora()">Cancelar</button>
+                                            <button type="reset" class="btn btn-default" onclick="recargarProyector()">Cancelar</button>
                                         </div>
                                     </form>
                                     <div id="texto"></div>
