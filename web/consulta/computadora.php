@@ -186,7 +186,7 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Consultas</h1>
+                        <h1 class="page-header">Consultas Equipos Asignados</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -213,12 +213,6 @@
                                             </tr>
                                         </thead>
                                     </table>
-
-
-
-
-
-                                    <div id="texto"></div>
                                 </div>
                                 <!-- /.row (nested) -->
                             </div>
@@ -247,8 +241,6 @@
         <!-- Custom Theme JavaScript -->
         <script src="../../public/dist/js/sb-admin-2.js"></script>
         <script src="../../public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="../../public/js/metodosAjax.js"></script>    
-
         <script src="../../public/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
         <script src="../../public/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
         <script src="../../public/js/consultaComputadora.js"></script>

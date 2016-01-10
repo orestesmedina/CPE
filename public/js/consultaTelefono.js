@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
     $.ajax({
-        url: '../../model/components/manejadores/ManejadorConsultarComputadora.php',
+        url: '../../model/components/manejadores/ManejadorConsultarTelefono.php',
         type: 'post',
         data: {tag: 'getData'},
         dataType: 'json',
@@ -32,15 +32,15 @@ $(document).ready(function () {
                         $("<td />").text(record.marca).appendTo(row);
                         $("<td />").text(record.modelo).appendTo(row);
                         $("<td />").text(record.serie).appendTo(row);
-                        $("<td />").text(record.tipo).appendTo(row);
+                        $("<td />").text(record.extension).appendTo(row);
                         $("<td />").text(record.oficina).appendTo(row);
                         $("<td />").text(record.estado).appendTo(row);
-                        row.appendTo("#tbConsultarComputadora");
+                        row.appendTo("#tbConsultarTelefono");
                     }
                 })
             }
 
-            $('#tbConsultarComputadora').dataTable({
+            $('#tbConsultarTelefono').dataTable({
                 "bJQueryUI": true,
                 "sPaginationType": "full_numbers"
             })

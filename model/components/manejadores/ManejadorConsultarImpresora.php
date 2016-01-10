@@ -4,9 +4,9 @@ $conexion = new Conexion();
 
 
 $conexion->conectar();
-$sql = 'select Equipo.placa, Equipo.marca, Equipo.modelo, Equipo.serie, Computadora.tipo, Oficina.nombreOficina, Equipo.estado'
-        . ' from Equipo, Oficina, Prestamo, Computadora'
-        . ' where Equipo.placa = Prestamo.placa and Oficina.idOficina = Prestamo.idOficina and Computadora.placa = Equipo.placa and Prestamo.estado = 1';
+$sql = 'select Equipo.placa, Equipo.marca, Equipo.modelo, Equipo.serie, Impresora.tipo, Impresora.consumible, Oficina.nombreOficina, Equipo.estado'
+        . ' from Equipo, Oficina, Prestamo, Impresora'
+        . ' where Equipo.placa = Prestamo.placa and Oficina.idOficina = Prestamo.idOficina and Impresora.placa = Equipo.placa and Prestamo.estado = 1';
 $result = $conexion->getConexion()->query($sql);
 
 if ($result->num_rows > 0) {
@@ -19,6 +19,7 @@ if ($result->num_rows > 0) {
             'modelo' => $row['modelo'],
             'serie' => $row['serie'],
             'tipo' => $row['tipo'],
+            'consumible' => $row['consumible'],
             'oficina' => $row['nombreOficina'],
             'estado' => $row['estado']
                 

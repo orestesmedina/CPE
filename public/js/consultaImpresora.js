@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
     $.ajax({
-        url: '../../model/components/manejadores/ManejadorConsultarComputadora.php',
+        url: '../../model/components/manejadores/ManejadorConsultarImpresora.php',
         type: 'post',
         data: {tag: 'getData'},
         dataType: 'json',
@@ -33,14 +33,15 @@ $(document).ready(function () {
                         $("<td />").text(record.modelo).appendTo(row);
                         $("<td />").text(record.serie).appendTo(row);
                         $("<td />").text(record.tipo).appendTo(row);
+                        $("<td />").text(record.consumible).appendTo(row);
                         $("<td />").text(record.oficina).appendTo(row);
                         $("<td />").text(record.estado).appendTo(row);
-                        row.appendTo("#tbConsultarComputadora");
+                        row.appendTo("#tbConsultarImpresora");
                     }
                 })
             }
 
-            $('#tbConsultarComputadora').dataTable({
+            $('#tbConsultarImpresora').dataTable({
                 "bJQueryUI": true,
                 "sPaginationType": "full_numbers"
             })
