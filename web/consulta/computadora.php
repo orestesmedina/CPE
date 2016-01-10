@@ -88,7 +88,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="../../web/asignacion/computadora/nuevo.php">Devolver</a>
+                                                <a href="../../web/asignacion/computadora/devolver.php">Devolver</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -168,10 +168,13 @@
                                 <a href="#"><i class="fa fa-sitemap fa-fw"></i>Oficinas<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="../../web/asignacion/oficina/nueva.php">Nueva Oficina</a>
+                                        <a href="../../web/oficina/nuevo.php">Nueva</a>
                                     </li>
                                     <li>
-                                        <a href="../../web/asignacion/oficina/eliminar.php">Eliminar Oficina</a>
+                                        <a href="../../web/oficina/eliminar.php">Eliminar</a>
+                                    </li>
+                                    <li>
+                                        <a href="../../web/oficina/consultar.php">Consultar</a>
                                     </li>
                                 </ul>
                             </li>

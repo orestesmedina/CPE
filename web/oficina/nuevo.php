@@ -12,9 +12,6 @@
 
         <title>CPE</title>
 
-        <!-- DataTables CSS -->
-        <link href="../../public/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
-
         <!-- Bootstrap Core CSS -->
         <link href="../../public/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -189,7 +186,7 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Consultas Equipos Asignados</h1>
+                        <h1 class="page-header"> Nueva Oficina</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -198,24 +195,29 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Consulta Telefono
+                                Oficina
                             </div>
                             <div class="panel-body">
-                                <div class="dataTable_wrapper">
+                                <div class="row">
 
-                                    <table id="tbConsultarTelefono" class="table table-striped table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>placa</th>
-                                                <th>marca</th>
-                                                <th>modelo</th>
-                                                <th>serie</th>
-                                                <th>extension</th>
-                                                <th>oficina</th>
-                                                <th>estado</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
+                                    <form action="../../control/office/InsertarController.php" method="POST" role="form" id="nuevaComputadora">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Nombre Oficina</label>
+                                                <input type="text" id="oficina" name="oficina" class="form-control" placeholder="Nombre Oficina"  required >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Unidad</label>
+                                                <input type="text" id="unidad" name="unidad" class="form-control" placeholder="Unidad" required  >
+                                            </div>
+
+
+                                            <button type="submit" class="btn btn-default" id="btnGuardar">Guardar</button>
+                                            <button type="reset" class="btn btn-default" onclick="recargarOficina()">Cancelar</button>
+                                        </div>
+                                    </form>
+                                    <div id="texto"></div>
                                 </div>
                                 <!-- /.row (nested) -->
                             </div>
@@ -244,9 +246,7 @@
         <!-- Custom Theme JavaScript -->
         <script src="../../public/dist/js/sb-admin-2.js"></script>
         <script src="../../public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="../../public/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
-        <script src="../../public/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-        <script src="../../public/js/consultaTelefono.js"></script>
+        <script src="../../public/js/metodosAjax.js"></script>      
     </body>
 
 </html>

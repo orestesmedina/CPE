@@ -72,7 +72,8 @@ function colocarDatosEquipo(modelo, serie, marca, anioIngreso, observacion, esta
     document.getElementById('marca').setAttribute('value', marca);
     seleccionarSelect('anioIngreso', anioIngreso);
     document.getElementById('observacion').innerHTML = observacion;
-    document.getElementById('estado').setAttribute('value', estado);
+    seleccionarSelect('estado', estado);
+    //document.getElementById('estado').setAttribute('value', estado);
 }
 
 function colocarDatosTelefono(extension) {
@@ -123,7 +124,7 @@ function limpiarCamposEquipo() {
     document.getElementById('marca').setAttribute('value', "");
     document.getElementById('anioIngreso').selectedIndex = 0;
     document.getElementById('observacion').innerHTML = "";
-    document.getElementById('estado').setAttribute('value', "");
+    document.getElementById('estado').selectedIndex = 0;
 }
 
 function limpiarCamposComputadora() {
@@ -215,4 +216,8 @@ function recargarImpresora() {
 
 function recargarProyector() {
         window.location.href="../../../web/asignacion/proyector/nuevo.php";
+}
+
+function recargarOficina() {
+        window.location.href="../../web/oficina/nuevo.php";
 }

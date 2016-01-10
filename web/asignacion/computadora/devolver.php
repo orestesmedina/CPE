@@ -155,16 +155,19 @@
                             <a href="../../asignacion/consulta/consultar.php"><i class="fa fa-sitemap fa-fw"></i>Consultas y Reportes<span class="fa arrow"></span></a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i>Oficinas<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="../../asignacion/oficina/nueva.php">Nueva Oficina</a>
-                                        </li>
-                                        <li>
-                                            <a href="../../asignacion/oficina/eliminar.php">Eliminar Oficina</a>
-                                        </li>
-                            </ul>
-                        </li>
+                                <a href="#"><i class="fa fa-sitemap fa-fw"></i>Oficinas<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="../../../web/oficina/nuevo.php">Nueva</a>
+                                    </li>
+                                    <li>
+                                        <a href="../../../web/oficina/eliminar.php">Eliminar</a>
+                                    </li>
+                                    <li>
+                                        <a href="../../../web/oficina/consultar.php">Consultar</a>
+                                    </li>
+                                </ul>
+                            </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

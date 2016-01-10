@@ -90,7 +90,7 @@ $manejadorOficina = new ManejadorOficina();
                                             </li>
 
                                             <li>
-                                                <a href="../../../web/asignacion/computadora/nuevo.php">Devolver</a>
+                                                <a href="../../../web/asignacion/computadora/devolver.php">Devolver</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -170,10 +170,13 @@ $manejadorOficina = new ManejadorOficina();
                                 <a href="#"><i class="fa fa-sitemap fa-fw"></i>Oficinas<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="../../asignacion/oficina/nueva.php">Nueva Oficina</a>
+                                        <a href="../../../web/oficina/nuevo.php">Nueva</a>
                                     </li>
                                     <li>
-                                        <a href="../../asignacion/oficina/eliminar.php">Eliminar Oficina</a>
+                                        <a href="../../../web/oficina/eliminar.php">Eliminar</a>
+                                    </li>
+                                    <li>
+                                        <a href="../../../web/oficina/consultar.php">Consultar</a>
                                     </li>
                                 </ul>
                             </li>
@@ -267,7 +270,13 @@ $manejadorOficina = new ManejadorOficina();
 
                                             <div class="form-group">
                                                 <label>Estado</label>
-                                                <input type="text" id="estado" name="estado" class="form-control" placeholder="estado" required readonly>
+                                                <select name="estado" id="estado" class="form-control" readonly>
+                                                    <option value="OFICIAL">OFICIAL</option>
+                                                    <option value="GARANTIA">GARANTIA</option>
+                                                    <option value="REPARACION">REPARACION</option>
+                                                    <option value="MALO">MALO</option>
+                                                    <option value="DESECHO">DESECHO</option>
+                                                </select>
                                             </div>
 
                                             <div class="form-group">
