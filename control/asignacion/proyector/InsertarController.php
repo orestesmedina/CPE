@@ -18,6 +18,7 @@ if (isset($_POST['placa']) && !empty($_POST['placa']) &&
         isset($_POST['estado']) && !empty($_POST['estado']) &&
         isset($_POST['idOficina']) && !empty($_POST['idOficina']) &&
         isset($_POST['idPersona']) && !empty($_POST['idPersona']) &&
+        isset($_POST['criterio']) && !empty($_POST['criterio']) &&
         isset($_POST['observacion']) && !empty($_POST['observacion'])) {
 
     $placa = $_POST['placa'];
@@ -29,6 +30,7 @@ if (isset($_POST['placa']) && !empty($_POST['placa']) &&
     $estado = $_POST['estado'];
     $observacion = $_POST['observacion'];
     $idOficina = $_POST['idOficina'];
+    $criterio = $_POST['criterio'];
 
     $manejadorEquipo = new ManejadorEquipo();
     $asignacion = new Asignacion();
@@ -53,7 +55,7 @@ if (isset($_POST['placa']) && !empty($_POST['placa']) &&
     if ($existeEquipo == true) {
         $insertar = $manejadorAsignacion->insertarAsignacion($asignacion);
         if ($insertar == true) {
-            $ModificarEquipo = $manejadorEquipo->modificarEstadoObservacion(mb_strtoupper($estado, 'UTF-8'), mb_strtoupper($observacion, 'UTF-8'), $placa);
+            $ModificarEquipo = $manejadorEquipo->modificarEstadoCriterioObservacion(mb_strtoupper($estado, 'UTF-8'), mb_strtoupper($criterio, 'UTF-8'), mb_strtoupper($observacion, 'UTF-8'), $placa);
             echo '<script language="javascript">alert("Asignación realiazada satisfactoriamente.");'
             . 'window.location.href="../../../web/asignacion/proyector/nuevo.php";</script>';
         } else {
@@ -69,6 +71,7 @@ if (isset($_POST['placa']) && !empty($_POST['placa']) &&
         $equipo->setModelo(mb_strtoupper($modelo, 'UTF-8'));
         $equipo->setObservacion(mb_strtoupper($observacion, 'UTF-8'));
         $equipo->setSerie(mb_strtoupper($serie, 'UTF-8'));
+        $equipo->setCriterio(mb_strtoupper($criterio, 'UTF-8'));
         $tipoEquipo = 'PROYECTOR';
         
         $proyector = new Proyector();

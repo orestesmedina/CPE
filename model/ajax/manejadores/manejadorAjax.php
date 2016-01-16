@@ -86,11 +86,11 @@ class ManejadorAjax extends Conexion {
         . $computadora['marca'] . '", "'
         . $computadora['anioIngreso'] . '", "'
         . $computadora['observacion'] . '", "'
-        . $computadora['estado'] . '");</script>';
+        . $computadora['estado'] . '", "'
+        . $computadora['criterio'] . '");</script>';
         echo '<script> colocarDatosComputadora("' . $computadora['procesador'] . '", "'
         . $computadora['tipo'] . '", "'
-        . $computadora['cantMemoria'] . '", "'
-        . $computadora['criterio'] . '");</script>';
+        . $computadora['cantMemoria'] . '");</script>';
     }
 
     public function buscarAsignacionTelefono($placa) {
@@ -172,7 +172,8 @@ class ManejadorAjax extends Conexion {
         . $telefono['marca'] . '", "'
         . $telefono['anioIngreso'] . '", "'
         . $telefono['observacion'] . '", "'
-        . $telefono['estado'] . '");</script>';
+        . $telefono['estado'] . '", "'
+        . $telefono['criterio'] . '");</script>';
         echo '<script> colocarDatosTelefono("' . $telefono['extension'] . '");</script>';
     }
 
@@ -196,14 +197,14 @@ class ManejadorAjax extends Conexion {
             if ($manejadorEquipo->existeEquipo($placa) == true) {
                 $manejadorImpresora = new ManejadorImpresora();
                 if ($manejadorImpresora->isImpresora($placa) == true) {
-                    $telefono = $manejadorImpresora->getImpresora($placa);
+                    $impresora = $manejadorImpresora->getImpresora($placa);
                     echo '<script>limpiarCamposEquipo();</script>';
                     echo '<script>limpiarCamposImpresora();</script>';
                     echo '<script>limpiarCamposAsignacion();</script>';
                     echo '<script>deshabilitarCamposEquipo();</script>';
                     echo '<script>habilitarCamposAsignacion();</script>';
                     // echo '<script>habilitarCamposImpresora();</script>';
-                    $this->imprimirImpresora($telefono);
+                    $this->imprimirImpresora($impresora);
                 } else {
                     $manejadorTelefono = new ManejadorTelefono();
                     if ($manejadorTelefono->isTelefono($placa) == true) {
@@ -255,7 +256,8 @@ class ManejadorAjax extends Conexion {
         . $impresora['marca'] . '", "'
         . $impresora['anioIngreso'] . '", "'
         . $impresora['observacion'] . '", "'
-        . $impresora['estado'] . '");</script>';
+        . $impresora['estado'] . '", "'
+        . $impresora['criterio'] . '");</script>';
         echo '<script> colocarDatosImpresora("' . $impresora['consumible'] . '", "'
         . $impresora['tipo'] . '");</script>';
     }
@@ -340,7 +342,8 @@ class ManejadorAjax extends Conexion {
         . $proyector['marca'] . '", "'
         . $proyector['anioIngreso'] . '", "'
         . $proyector['observacion'] . '", "'
-        . $proyector['estado'] . '");</script>';
+        . $proyector['estado'] . '", "'
+        . $proyector['criterio'] . '");</script>';
         echo '<script> colocarDatosProyector("' . $proyector['funcionalidad'] . '");</script>';
     }
 

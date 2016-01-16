@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS `CPE`.`Equipo` (
   `serie` VARCHAR(45) NOT NULL,
   `marca` VARCHAR(45) NOT NULL,
   `modelo` VARCHAR(45) NOT NULL DEFAULT '',
+  `criterio` VARCHAR(45) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
   `anio_ingreso` INT(4) NOT NULL,
   `observacion` MEDIUMTEXT NULL,
@@ -34,7 +35,6 @@ CREATE TABLE IF NOT EXISTS `CPE`.`Computadora` (
   `tipo` VARCHAR(45) NOT NULL,
   `procesador` VARCHAR(45) NULL,
   `cant_memoria_hhd` VARCHAR(45) NULL,
-  `criterio` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`placa`),
   CONSTRAINT `fk_Computadora_Equipo`
     FOREIGN KEY (`placa`)

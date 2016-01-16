@@ -251,6 +251,10 @@ $manejadorOficina = new ManejadorOficina();
                                                 </select>
                                             </div>
 
+                                            <div class="form-group">
+                                                <label>Criterio</label>
+                                                <input type="text" id="criterio" name="criterio" class="form-control" placeholder="Criterio" required readonly>
+                                            </div>
 
                                             <div class="form-group">
                                                 <label>Estado</label>

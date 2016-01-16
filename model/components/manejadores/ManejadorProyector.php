@@ -60,13 +60,13 @@ class ManejadorProyector extends Conexion {
 
         $this->conectar();
         $stmt = $this->getConexion()->prepare('SELECT Equipo.placa, Equipo.marca, Equipo.modelo, Equipo.serie,'
-                . 'Equipo.estado, Equipo.observacion, Equipo.anio_ingreso, Proyector.funcionalidad'
+                . 'Equipo.estado, Equipo.observacion, Equipo.anio_ingreso, Proyector.funcionalidad, Equipo.criterio'
                 . ' FROM Proyector, Equipo WHERE Equipo.placa = Proyector.placa and Equipo.placa = ?');
         if ($stmt) {
             $stmt->bind_param('i', $placa);
             $stmt->execute();
 
-            $stmt->bind_result($pla, $marca, $modelo, $serie, $estado, $observacion, $anioIngreso, $funcionalidad);
+            $stmt->bind_result($pla, $marca, $modelo, $serie, $estado, $observacion, $anioIngreso, $funcionalidad, $criterio);
             $stmt->fetch();
 
             $proyector['placa'] = $pla;
@@ -77,6 +77,7 @@ class ManejadorProyector extends Conexion {
             $proyector['anioIngreso'] = $anioIngreso;
             $proyector['observacion'] = $observacion;
             $proyector['funcionalidad'] = $funcionalidad;
+            $proyector['criterio'] = $criterio;
             $this->cerrarConexion();
             $stmt->close();
             return $proyector;

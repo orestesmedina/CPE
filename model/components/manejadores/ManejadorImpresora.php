@@ -60,27 +60,28 @@ class ManejadorImpresora extends Conexion {
 
         $this->conectar();
         $stmt = $this->getConexion()->prepare('SELECT Equipo.placa, Equipo.marca, Equipo.modelo, Equipo.serie,'
-                . 'Equipo.estado, Equipo.observacion, Equipo.anio_ingreso, Impresora.consumible, Impresora.tipo'
+                . 'Equipo.estado, Equipo.observacion, Equipo.anio_ingreso, Impresora.consumible, Impresora.tipo, Equipo.criterio'
                 . ' FROM Impresora, Equipo WHERE Equipo.placa = Impresora.placa and Equipo.placa = ?');
         if ($stmt) {
             $stmt->bind_param('i', $placa);
             $stmt->execute();
 
-            $stmt->bind_result($pla, $marca, $modelo, $serie, $estado, $observacion, $anioIngreso, $consumible, $tipo);
+            $stmt->bind_result($pla, $marca, $modelo, $serie, $estado, $observacion, $anioIngreso, $consumible, $tipo, $criterio);
             $stmt->fetch();
 
-            $telefono['placa'] = $pla;
-            $telefono['marca'] = $marca;
-            $telefono['modelo'] = $modelo;
-            $telefono['serie'] = $serie;
-            $telefono['estado'] = $estado;
-            $telefono['anioIngreso'] = $anioIngreso;
-            $telefono['observacion'] = $observacion;
-            $telefono['consumible'] = $consumible;
-            $telefono['tipo'] = $tipo;
+            $impresora['placa'] = $pla;
+            $impresora['marca'] = $marca;
+            $impresora['modelo'] = $modelo;
+            $impresora['serie'] = $serie;
+            $impresora['estado'] = $estado;
+            $impresora['anioIngreso'] = $anioIngreso;
+            $impresora['observacion'] = $observacion;
+            $impresora['consumible'] = $consumible;
+            $impresora['tipo'] = $tipo;
+            $impresora['criterio'] = $criterio;
             $this->cerrarConexion();
             $stmt->close();
-            return $telefono;
+            return $impresora;
         }
 
         $stmt->close();

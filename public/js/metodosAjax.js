@@ -50,11 +50,11 @@ function buscarTelefono() {
 
 }
 
-function colocarDatosComputadora(procesador, tipo, cantMemoria, criterio) {
+function colocarDatosComputadora(procesador, tipo, cantMemoria) {
     document.getElementById('procesador').setAttribute('value', procesador);
     seleccionarSelect('tipo', tipo);
     document.getElementById('cantMemoria').setAttribute('value', cantMemoria);
-    document.getElementById('criterio').setAttribute('value', criterio);
+    
 }
 
 function colocarDatosImpresora(consumible, tipo) {
@@ -66,13 +66,14 @@ function colocarDatosProyector(funcionalidad) {
     document.getElementById('funcionalidad').setAttribute('value', funcionalidad);
 }
 
-function colocarDatosEquipo(modelo, serie, marca, anioIngreso, observacion, estado) {
+function colocarDatosEquipo(modelo, serie, marca, anioIngreso, observacion, estado, criterio) {
     document.getElementById('modelo').setAttribute('value', modelo);
     document.getElementById('serie').setAttribute('value', serie);
     document.getElementById('marca').setAttribute('value', marca);
     seleccionarSelect('anioIngreso', anioIngreso);
     document.getElementById('observacion').innerHTML = observacion;
     seleccionarSelect('estado', estado);
+    document.getElementById('criterio').setAttribute('value', criterio);
     //document.getElementById('estado').setAttribute('value', estado);
 }
 
@@ -96,13 +97,14 @@ function habilitarCamposEquipo() {
     document.getElementById('marca').removeAttribute('readonly');
     document.getElementById('anioIngreso').removeAttribute('readonly');
     document.getElementById('observacion').removeAttribute('readonly');
+    document.getElementById('criterio').removeAttribute('readonly');
 }
 
 function habilitarCamposComputadora() {
     document.getElementById('procesador').removeAttribute('readonly');
     document.getElementById('tipo').removeAttribute('readonly');
     document.getElementById('cantMemoria').removeAttribute('readonly');
-    document.getElementById('criterio').removeAttribute('readonly');
+    
 }
 
 function habilitarCamposImpresora() {
@@ -125,13 +127,14 @@ function limpiarCamposEquipo() {
     document.getElementById('anioIngreso').selectedIndex = 0;
     document.getElementById('observacion').innerHTML = "";
     document.getElementById('estado').selectedIndex = 0;
+    document.getElementById('criterio').setAttribute('value', "");
 }
 
 function limpiarCamposComputadora() {
     document.getElementById('procesador').setAttribute('value', "");
     document.getElementById('tipo').selectedIndex = 0;
     document.getElementById('cantMemoria').setAttribute('value', "");
-    document.getElementById('criterio').setAttribute('value', "");
+    
 }
 
 function limpiarCamposImpresora() {
@@ -172,13 +175,14 @@ function deshabilitarCamposEquipo() {
     document.getElementById('anioIngreso').setAttribute('readonly', 'TRUE');
     document.getElementById('observacion').setAttribute('readonly', 'TRUE');
     document.getElementById('estado').setAttribute('readonly', 'TRUE');
+    document.getElementById('criterio').setAttribute('readonly', 'TRUE');
 }
 
 function deshabilitarCamposComputadora() {
     document.getElementById('procesador').setAttribute('readonly', 'TRUE');
     document.getElementById('tipo').setAttribute('readonly', 'TRUE');
     document.getElementById('cantMemoria').setAttribute('readonly', 'TRUE');
-    document.getElementById('criterio').setAttribute('readonly', 'TRUE');
+    
 }
 
 function deshabilitarCamposImpresora() {

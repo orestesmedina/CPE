@@ -59,7 +59,7 @@ if (isset($_POST['placa']) && !empty($_POST['placa']) &&
     if ($existeEquipo == true) {
         $insertar = $manejadorAsignacion->insertarAsignacion($asignacion);
         if ($insertar == true) {
-            $ModificarEquipo = $manejadorEquipo->modificarEstadoObservacion(mb_strtoupper($estado, 'UTF-8'), mb_strtoupper($observacion, 'UTF-8'), $placa);
+            $ModificarEquipo = $manejadorEquipo->modificarEstadoCriterioObservacion(mb_strtoupper($estado, 'UTF-8'), mb_strtoupper($criterio, 'UTF-8'), mb_strtoupper($observacion, 'UTF-8'), $placa);
             echo '<script language="javascript">alert("Asignación realiazada satisfactoriamente.");'
             . 'window.location.href="../../../web/asignacion/computadora/nuevo.php";</script>';
         } else {
@@ -75,13 +75,14 @@ if (isset($_POST['placa']) && !empty($_POST['placa']) &&
         $equipo->setModelo(mb_strtoupper($modelo, 'UTF-8'));
         $equipo->setObservacion(mb_strtoupper($observacion, 'UTF-8'));
         $equipo->setSerie(mb_strtoupper($serie, 'UTF-8'));
+        $equipo->setCriterio(mb_strtoupper($criterio, 'UTF-8'));
         $tipoEquipo = 'COMPUTADORA';
         
         $computadora = new Computadora();
         $computadora->setPlaca($placa);
         $computadora->setTipo(mb_strtoupper($tipo, 'UTF-8'));
         $computadora->setCantMemoriaHhd(mb_strtoupper($cantMemoria, 'UTF-8'));
-        $computadora->setCriterio(mb_strtoupper($criterio, 'UTF-8'));
+        
         $computadora->setProcesador(mb_strtoupper($procesador, 'UTF-8'));
         
         $manejadorComputadora = new ManejadorComputadora();

@@ -5,7 +5,6 @@ class Computadora {
     private $tipo;
     private $procesador;
     private $cantMemoriaHhd;
-    private $criterio;
     private $placa;
 
     public function __construct() {
@@ -41,14 +40,6 @@ class Computadora {
 
     public function getCantMemoriaHhd() {
         return $this->cantMemoriaHhd;
-    }
-
-    public function setCriterio($criterio) {
-        $this->criterio = $criterio;
-    }
-
-    public function getCriterio() {
-        return $this->criterio;
     }
 
 }

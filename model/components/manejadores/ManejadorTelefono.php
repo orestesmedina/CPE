@@ -60,13 +60,13 @@ class ManejadorTelefono extends Conexion {
 
         $this->conectar();
         $stmt = $this->getConexion()->prepare('SELECT Equipo.placa, Equipo.marca, Equipo.modelo, Equipo.serie,'
-                . 'Equipo.estado, Equipo.observacion, Equipo.anio_ingreso, Telefonia.extension'
+                . 'Equipo.estado, Equipo.observacion, Equipo.anio_ingreso, Telefonia.extension, Equipo.criterio'
                 . ' FROM Telefonia, Equipo WHERE Equipo.placa = Telefonia.placa and Equipo.placa = ?');
         if ($stmt) {
             $stmt->bind_param('i', $placa);
             $stmt->execute();
 
-            $stmt->bind_result($pla, $marca, $modelo, $serie, $estado, $observacion, $anioIngreso, $extension);
+            $stmt->bind_result($pla, $marca, $modelo, $serie, $estado, $observacion, $anioIngreso, $extension, $criterio);
             $stmt->fetch();
 
             $telefono['placa'] = $pla;
@@ -77,6 +77,7 @@ class ManejadorTelefono extends Conexion {
             $telefono['anioIngreso'] = $anioIngreso;
             $telefono['observacion'] = $observacion;
             $telefono['extension'] = $extension;
+            $telefono['criterio'] = $criterio;
             $this->cerrarConexion();
             $stmt->close();
             return $telefono;

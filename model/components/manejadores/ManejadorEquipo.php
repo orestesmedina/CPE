@@ -32,12 +32,12 @@ class ManejadorEquipo extends Conexion {
         }
     }
 
-    public function modificarEstadoObservacion($estado, $observacion, $placa) {
+    public function modificarEstadoCriterioObservacion($estado, $criterio, $observacion, $placa) {
         $this->conectar();
-        $stmt = $this->getConexion()->prepare('UPDATE Equipo set estado = ?, observacion = ? WHERE placa = ?');
+        $stmt = $this->getConexion()->prepare('UPDATE Equipo set estado = ?, criterio = ?, observacion = ? WHERE placa = ?');
         
         if($stmt) {
-            $stmt->bind_param('ssi', $estado, $observacion, $placa);
+            $stmt->bind_param('sssi', $estado, $criterio, $observacion, $placa);
             $stmt->execute();
             $stmt->close();
             $this->cerrarConexion();
@@ -51,10 +51,11 @@ class ManejadorEquipo extends Conexion {
     public function insertarEquipo(Equipo $equipo, $tipo) {
 
         $this->conectar();
-        $stmt = $this->getConexion()->prepare('INSERT INTO Equipo (placa, serie, marca, modelo, estado, anio_ingreso, observacion, tipoEquipo) '
-                . 'VALUES (?,?,?,?,?,?,?,?)');
+        $stmt = $this->getConexion()->prepare('INSERT INTO Equipo (placa, serie, marca, modelo, estado, criterio, anio_ingreso, observacion, tipoEquipo) '
+                . 'VALUES (?,?,?,?,?,?,?,?,?)');
         if ($stmt) {
-            $stmt->bind_param('issssiss', $equipo->getPlaca(), $equipo->getSerie(), $equipo->getMarca(), $equipo->getModelo(), $equipo->getEstado(), $equipo->getAnioIngreso(), $equipo->getObservacion(), $tipo);
+            $stmt->bind_param('isssssiss', $equipo->getPlaca(), $equipo->getSerie(), $equipo->getMarca(), $equipo->getModelo(), $equipo->getEstado(),
+                    $equipo->getCriterio(), $equipo->getAnioIngreso(), $equipo->getObservacion(), $tipo);
             $stmt->execute();
             $stmt->close();
             $this->cerrarConexion();
