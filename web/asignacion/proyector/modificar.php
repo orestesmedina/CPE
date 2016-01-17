@@ -130,7 +130,7 @@ $manejadorOficina = new ManejadorOficina();
                                             </li>
 
                                             <li>
-                                                <a href="../../../web/asignacion/telefono/modificar.php">modificar</a>
+                                                <a href="../../../web/asignacion/telefono/modificar.php">Modificar</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -191,7 +191,7 @@ $manejadorOficina = new ManejadorOficina();
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"> Nueva Asignación</h1>
+                        <h1 class="page-header"> Modificar Asignación</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -200,17 +200,17 @@ $manejadorOficina = new ManejadorOficina();
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Asignación Teléfono
+                                Modificar Proyector
                             </div>
                             <div class="panel-body">
                                 <div class="row">
 
-                                    <form action="../../../control/asignacion/telefono/InsertarController.php" method="POST" role="form" id="nuevaComputadora">
+                                    <form action="../../../control/asignacion/proyector/InsertarController.php" method="POST" role="form" id="nuevaComputadora">
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Número de placa</label>
                                                 <input type="text" id="placa" name="placa" class="form-control" placeholder="Número de placa"  required pattern="[0-9]{1,10}" maxlength="10" title="ingrese solo números, mínimo once digitos">
-                                                <button type="button" class="btn btn-default" onclick="buscarTelefono('insertar');">
+                                                <button type="button" class="btn btn-default" onclick="buscarProyector('modificar');">
                                                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                                                 </button>
 
@@ -230,12 +230,12 @@ $manejadorOficina = new ManejadorOficina();
                                                 <label>Serie</label>
                                                 <input type="text" id="serie" name="serie" class="form-control" placeholder="Serie" required  readonly>
                                             </div>
-                                       
-                                            <div class="form-group">
-                                                <label>Extensión</label>
-                                                <input type="text" id="extension" name="extension" class="form-control" placeholder="Número de extensión" required  readonly>
-                                            </div>
 
+                                            
+                                            <div class="form-group">
+                                                <label>Funcionalidad</label>
+                                                <input type="text" id="funcionalidad" name="funcionalidad" class="form-control" placeholder="Funcionalidad" required readonly>
+                                            </div>
 
                                         </div>
 
@@ -250,7 +250,7 @@ $manejadorOficina = new ManejadorOficina();
                                                     ?>
                                                 </select>
                                             </div>
-
+                                            
                                             <div class="form-group">
                                                 <label>Criterio</label>
                                                 <input type="text" id="criterio" name="criterio" class="form-control" placeholder="Criterio" required readonly>
@@ -284,7 +284,7 @@ $manejadorOficina = new ManejadorOficina();
                                                 <textarea name="observacion" id="observacion" class="form-control" readonly></textarea>
                                             </div>
                                             <button type="submit" class="btn btn-default" disabled id="btnGuardar">Guardar</button>
-                                            <button type="reset" class="btn btn-default" onclick="recargarTelefono()()">Cancelar</button>
+                                            <button type="reset" class="btn btn-default" onclick="recargarProyector()">Cancelar</button>
                                         </div>
                                     </form>
                                     <div id="texto"></div>

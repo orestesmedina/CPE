@@ -1,9 +1,9 @@
-function buscarComputadora() {
+function buscarComputadora(accion) {
     var idEquipo = document.getElementById('placa').value;
     $.ajax({
         type: "POST",
         url: '/CPE/control/ajax/BuscarComputadora.php',
-        data: {'placa': idEquipo},
+        data: {'placa': idEquipo, 'accion': accion},
         success: function (data) {
             $('#texto').html(data);
         }
@@ -11,12 +11,12 @@ function buscarComputadora() {
 
 }
 
-function buscarImpresora() {
+function buscarImpresora(accion) {
     var idEquipo = document.getElementById('placa').value;
     $.ajax({
         type: "POST",
         url: '/CPE/control/ajax/BuscarImpresora.php',
-        data: {'placa': idEquipo},
+        data: {'placa': idEquipo, 'accion': accion},
         success: function (data) {
             $('#texto').html(data);
         }
@@ -24,12 +24,12 @@ function buscarImpresora() {
 
 }
 
-function buscarProyector() {
+function buscarProyector(accion) {
     var idEquipo = document.getElementById('placa').value;
     $.ajax({
         type: "POST",
         url: '/CPE/control/ajax/BuscarProyector.php',
-        data: {'placa': idEquipo},
+        data: {'placa': idEquipo, 'accion': accion},
         success: function (data) {
             $('#texto').html(data);
         }
@@ -37,12 +37,12 @@ function buscarProyector() {
 
 }
 
-function buscarTelefono() {
+function buscarTelefono(accion) {
     var idEquipo = document.getElementById('placa').value;
     $.ajax({
         type: "POST",
         url: '/CPE/control/ajax/BuscarTelefono.php',
-        data: {'placa': idEquipo},
+        data: {'placa': idEquipo, 'accion': accion},
         success: function (data) {
             $('#texto').html(data);
         }
@@ -64,6 +64,12 @@ function colocarDatosImpresora(consumible, tipo) {
 
 function colocarDatosProyector(funcionalidad) {
     document.getElementById('funcionalidad').setAttribute('value', funcionalidad);
+}
+
+function colocarDatosAsignacion(nombrePersona, idOficina) {
+    seleccionarSelect('idOficina', idOficina);
+    document.getElementById('idPersona').setAttribute('value', nombrePersona);
+    
 }
 
 function colocarDatosEquipo(modelo, serie, marca, anioIngreso, observacion, estado, criterio) {
@@ -162,7 +168,7 @@ function seleccionarSelect(select, value)
 {
     for (var indice = 0; indice < document.getElementById(select).length; indice++)
     {
-        if (document.getElementById(select).options[indice].text == value)
+        if (document.getElementById(select).options[indice].value === value)
             document.getElementById(select).selectedIndex = indice;
     }
 }

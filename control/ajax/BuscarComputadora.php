@@ -11,10 +11,19 @@ require '../../model/components/manejadores/ManejadorTelefono.php';
 require '../../model/ajax/manejadores/manejadorAjax.php';
 
 
-if (isset($_POST['placa']) && !empty($_POST['placa'])) {
+if (isset($_POST['placa']) && !empty($_POST['placa']) &&
+isset($_POST['accion']) && !empty($_POST['accion'])) {
+  $accion = $_POST['accion']  ;
+  $manejadorAjax = new ManejadorAjax();
+  
+switch ($accion) {
+    case 'insertar' :
+        $computadora = $manejadorAjax->buscarAsignacionComputadora($_POST['placa'], $accion);
+        break;
     
-
-    $manejadorAjax = new ManejadorAjax();
-    $computadora = $manejadorAjax->buscarAsignacionComputadora($_POST['placa']);
+    case 'modificar':
+        $computadora = $manejadorAjax->buscarAsignacionComputadora($_POST['placa'], $accion);
+        break;
+}
 
 }

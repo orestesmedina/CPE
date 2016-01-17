@@ -2,7 +2,7 @@
 
 class ManejadorAjax extends Conexion {
 
-    public function buscarAsignacionComputadora($placa) {
+    public function buscarAsignacionComputadora($placa, $accion) {
         $this->conectar();
         $sql = 'SELECT placa FROM Prestamo WHERE placa = ' . $placa . ' and estado = 1 ';
 
@@ -10,13 +10,28 @@ class ManejadorAjax extends Conexion {
 
         if ($result->num_rows > 0) {
             $this->cerrarConexion();
-            echo '<script>limpiarCamposEquipo();</script>';
-            echo '<script>limpiarCamposComputadora();</script>';
-            echo '<script>limpiarCamposAsignacion();</script>';
-            echo '<script>deshabilitarCamposEquipo();</script>';
-            echo '<script>deshabilitarCamposComputadora();</script>';
-            echo '<script>deshabilitarCamposAsignacion();</script>';
-            $this->imprimirMensaje("El componente ya se encuentra asignado.");
+            if ($accion == 'insertar') {
+                echo '<script>limpiarCamposEquipo();</script>';
+                echo '<script>limpiarCamposComputadora();</script>';
+                echo '<script>limpiarCamposAsignacion();</script>';
+                echo '<script>deshabilitarCamposEquipo();</script>';
+                echo '<script>deshabilitarCamposComputadora();</script>';
+                echo '<script>deshabilitarCamposAsignacion();</script>';
+                $this->imprimirMensaje("El componente ya se encuentra asignado.");
+            } else if ($accion == 'modificar') {
+                $manejadorComputadora = new ManejadorComputadora();
+                $manejadorEquipo = new ManejadorEquipo();
+                $computadora = $manejadorComputadora->getComputadora($placa);
+                $asignacion = $manejadorEquipo->getAsignacion($placa);
+                echo '<script>limpiarCamposEquipo();</script>';
+                echo '<script>limpiarCamposComputadora();</script>';
+                echo '<script>limpiarCamposAsignacion();</script>';
+                echo '<script>habilitarCamposEquipo();</script>';
+                echo '<script>habilitarCamposAsignacion();</script>';
+                echo '<script>habilitarCamposComputadora();</script>';
+                $this->imprimirComputadora($computadora);
+                $this->imprimirAsignacion($asignacion);
+            }
         } else {
             $this->cerrarConexion();
             $manejadorEquipo = new ManejadorEquipo();
@@ -27,9 +42,16 @@ class ManejadorAjax extends Conexion {
                     echo '<script>limpiarCamposEquipo();</script>';
                     echo '<script>limpiarCamposComputadora();</script>';
                     echo '<script>limpiarCamposAsignacion();</script>';
-                    echo '<script>deshabilitarCamposEquipo();</script>';
-                    echo '<script>habilitarCamposAsignacion();</script>';
-                    echo '<script>deshabilitarCamposComputadora();</script>';
+                    if ($accion == 'insertar') {
+                        echo '<script>deshabilitarCamposEquipo();</script>';
+                        echo '<script>habilitarCamposAsignacion();</script>';
+                        echo '<script>deshabilitarCamposComputadora();</script>';
+                    } else if ($accion == 'modificar') {
+                        echo '<script>habilitarCamposEquipo();</script>';
+                        echo '<script>habilitarCamposAsignacion();</script>';
+                        echo '<script>habilitarCamposComputadora();</script>';
+                    }
+
                     $this->imprimirComputadora($computadora);
                 } else {
                     $manejadorImpresora = new ManejadorImpresora();
@@ -80,6 +102,11 @@ class ManejadorAjax extends Conexion {
         echo '<script> alert("' . $mensaje . '");</script>';
     }
 
+    private function imprimirAsignacion($asignacion) {
+        echo '<script> colocarDatosAsignacion("' . $asignacion['nombrePersona'] . '", "'
+        . $asignacion['idOficina'] . '");</script>';
+    }
+
     private function imprimirComputadora($computadora) {
         echo '<script> colocarDatosEquipo("' . $computadora['modelo'] . '", "'
         . $computadora['serie'] . '", "'
@@ -93,20 +120,35 @@ class ManejadorAjax extends Conexion {
         . $computadora['cantMemoria'] . '");</script>';
     }
 
-    public function buscarAsignacionTelefono($placa) {
+    public function buscarAsignacionTelefono($placa, $accion) {
         $this->conectar();
         $sql = 'SELECT placa FROM Prestamo WHERE placa = ' . $placa . ' and estado = 1 ';
         $result = $this->getConexion()->query($sql);
 
         if ($result->num_rows > 0) {
             $this->cerrarConexion();
-            echo '<script>limpiarCamposEquipo();</script>';
-            echo '<script>limpiarCamposTelefono();</script>';
-            echo '<script>limpiarCamposAsignacion();</script>';
-            echo '<script>deshabilitarCamposEquipo();</script>';
-            echo '<script>deshabilitarCamposTelefono();</script>';
-            echo '<script>deshabilitarCamposAsignacion();</script>';
-            $this->imprimirMensaje("El componente ya se encuentra asignado.");
+            if ($accion == 'insertar') {
+                echo '<script>limpiarCamposEquipo();</script>';
+                echo '<script>limpiarCamposTelefono();</script>';
+                echo '<script>limpiarCamposAsignacion();</script>';
+                echo '<script>deshabilitarCamposEquipo();</script>';
+                echo '<script>deshabilitarCamposTelefono();</script>';
+                echo '<script>deshabilitarCamposAsignacion();</script>';
+                $this->imprimirMensaje("El componente ya se encuentra asignado.");
+            } else if ($accion == 'modificar') {
+                $manejadorTelefono = new ManejadorTelefono();
+                $manejadorEquipo = new ManejadorEquipo();
+                $impresora = $manejadorTelefono->getTelefono($placa);
+                $asignacion = $manejadorEquipo->getAsignacion($placa);
+                echo '<script>limpiarCamposEquipo();</script>';
+                echo '<script>limpiarCamposTelefono();</script>';
+                echo '<script>limpiarCamposAsignacion();</script>';
+                echo '<script>habilitarCamposEquipo();</script>';
+                echo '<script>habilitarCamposAsignacion();</script>';
+                echo '<script>habilitarCamposTelefono();</script>';
+                $this->imprimirImpresora($impresora);
+                $this->imprimirAsignacion($asignacion);
+            }
         } else {
             $this->cerrarConexion();
             $manejadorEquipo = new ManejadorEquipo();
@@ -117,9 +159,16 @@ class ManejadorAjax extends Conexion {
                     echo '<script>limpiarCamposEquipo();</script>';
                     echo '<script>limpiarCamposTelefono();</script>';
                     echo '<script>limpiarCamposAsignacion();</script>';
-                    echo '<script>deshabilitarCamposEquipo();</script>';
-                    echo '<script>habilitarCamposAsignacion();</script>';
-                    echo '<script>habilitarCamposTelefono();</script>';
+                    if ($accion == 'insertar') {
+                        echo '<script>deshabilitarCamposEquipo();</script>';
+                        echo '<script>habilitarCamposAsignacion();</script>';
+                        echo '<script>habilitarCamposTelefono();</script>';
+                    } else if ($accion == 'modificar') {
+                        echo '<script>deshabilitarCamposEquipo();</script>';
+                        echo '<script>habilitarCamposAsignacion();</script>';
+                        echo '<script>habilitarCamposTelefono();</script>';
+                    }
+
                     $this->imprimirTelefono($telefono);
                 } else {
                     $manejadorImpresora = new ManejadorImpresora();
@@ -177,20 +226,35 @@ class ManejadorAjax extends Conexion {
         echo '<script> colocarDatosTelefono("' . $telefono['extension'] . '");</script>';
     }
 
-    public function buscarAsignacionImpresora($placa) {
+    public function buscarAsignacionImpresora($placa, $accion) {
         $this->conectar();
         $sql = 'SELECT placa FROM Prestamo WHERE placa = ' . $placa . ' and estado = 1 ';
         $result = $this->getConexion()->query($sql);
 
         if ($result->num_rows > 0) {
             $this->cerrarConexion();
-            echo '<script>limpiarCamposEquipo();</script>';
-            echo '<script>limpiarCamposImpresora();</script>';
-            echo '<script>limpiarCamposAsignacion();</script>';
-            echo '<script>deshabilitarCamposEquipo();</script>';
-            echo '<script>deshabilitarCamposImpresora();</script>';
-            echo '<script>deshabilitarCamposAsignacion();</script>';
-            $this->imprimirMensaje("El componente ya se encuentra asignado.");
+            if ($accion == 'insertar') {
+                echo '<script>limpiarCamposEquipo();</script>';
+                echo '<script>limpiarCamposImpresora();</script>';
+                echo '<script>limpiarCamposAsignacion();</script>';
+                echo '<script>deshabilitarCamposEquipo();</script>';
+                echo '<script>deshabilitarCamposImpresora();</script>';
+                echo '<script>deshabilitarCamposAsignacion();</script>';
+                $this->imprimirMensaje("El componente ya se encuentra asignado.");
+            } else if ($accion == 'modificar') {
+                $manejadorImpresora = new ManejadorImpresora();
+                $manejadorEquipo = new ManejadorEquipo();
+                $impresora = $manejadorImpresora->getImpresora($placa);
+                $asignacion = $manejadorEquipo->getAsignacion($placa);
+                echo '<script>limpiarCamposEquipo();</script>';
+                echo '<script>limpiarCamposImpresora();</script>';
+                echo '<script>limpiarCamposAsignacion();</script>';
+                echo '<script>habilitarCamposEquipo();</script>';
+                echo '<script>habilitarCamposAsignacion();</script>';
+                echo '<script>habilitarCamposImpresora();</script>';
+                $this->imprimirImpresora($impresora);
+                $this->imprimirAsignacion($asignacion);
+            }
         } else {
             $this->cerrarConexion();
             $manejadorEquipo = new ManejadorEquipo();
@@ -201,9 +265,15 @@ class ManejadorAjax extends Conexion {
                     echo '<script>limpiarCamposEquipo();</script>';
                     echo '<script>limpiarCamposImpresora();</script>';
                     echo '<script>limpiarCamposAsignacion();</script>';
-                    echo '<script>deshabilitarCamposEquipo();</script>';
-                    echo '<script>habilitarCamposAsignacion();</script>';
-                    // echo '<script>habilitarCamposImpresora();</script>';
+                    if ($accion == 'insertar') {
+                        echo '<script>deshabilitarCamposEquipo();</script>';
+                        echo '<script>habilitarCamposAsignacion();</script>';
+                    } else if ($accion == 'modificar') {
+                        echo '<script>habilitarCamposEquipo();</script>';
+                        echo '<script>habilitarCamposAsignacion();</script>';
+                        echo '<script>habilitarCamposImpresora();</script>';
+                    }
+
                     $this->imprimirImpresora($impresora);
                 } else {
                     $manejadorTelefono = new ManejadorTelefono();
@@ -262,7 +332,7 @@ class ManejadorAjax extends Conexion {
         . $impresora['tipo'] . '");</script>';
     }
 
-    public function buscarAsignacionProyector($placa) {
+    public function buscarAsignacionProyector($placa, $accion) {
         $this->conectar();
         $sql = 'SELECT placa FROM Prestamo WHERE placa = ' . $placa . ' and estado = 1 ';
 
@@ -270,13 +340,29 @@ class ManejadorAjax extends Conexion {
 
         if ($result->num_rows > 0) {
             $this->cerrarConexion();
-            echo '<script>limpiarCamposEquipo();</script>';
-            echo '<script>limpiarCamposProyector();</script>';
-            echo '<script>limpiarCamposAsignacion();</script>';
-            echo '<script>deshabilitarCamposEquipo();</script>';
-            echo '<script>deshabilitarCamposProyector();</script>';
-            echo '<script>deshabilitarCamposAsignacion();</script>';
-            $this->imprimirMensaje("El componente ya se encuentra asignado.");
+            if ($accion == 'insertar') {
+
+                echo '<script>limpiarCamposEquipo();</script>';
+                echo '<script>limpiarCamposProyector();</script>';
+                echo '<script>limpiarCamposAsignacion();</script>';
+                echo '<script>deshabilitarCamposEquipo();</script>';
+                echo '<script>deshabilitarCamposProyector();</script>';
+                echo '<script>deshabilitarCamposAsignacion();</script>';
+                $this->imprimirMensaje("El componente ya se encuentra asignado.");
+            } else if ($accion == 'modificar') {
+                $manejadorProyector = new ManejadorProyector();
+                $manejadorEquipo = new ManejadorEquipo();
+                $proyector = $manejadorProyector->getProyector($placa);
+                $asignacion = $manejadorEquipo->getAsignacion($placa);
+                echo '<script>limpiarCamposEquipo();</script>';
+                echo '<script>limpiarCamposProyector();</script>';
+                echo '<script>limpiarCamposAsignacion();</script>';
+                echo '<script>habilitarCamposEquipo();</script>';
+                echo '<script>habilitarCamposAsignacion();</script>';
+                echo '<script>habilitarCamposProyector();</script>';
+                $this->imprimirProyector($proyector);
+                $this->imprimirAsignacion($asignacion);
+            }
         } else {
             $this->cerrarConexion();
             $manejadorEquipo = new ManejadorEquipo();
@@ -287,9 +373,16 @@ class ManejadorAjax extends Conexion {
                     echo '<script>limpiarCamposEquipo();</script>';
                     echo '<script>limpiarCamposProyector();</script>';
                     echo '<script>limpiarCamposAsignacion();</script>';
-                    echo '<script>deshabilitarCamposEquipo();</script>';
-                    echo '<script>habilitarCamposAsignacion();</script>';
-                    echo '<script>deshabilitarCamposProyector();</script>';
+                    if ($accion == 'insertar') {
+                        echo '<script>deshabilitarCamposEquipo();</script>';
+                        echo '<script>habilitarCamposAsignacion();</script>';
+                        echo '<script>deshabilitarCamposProyector();</script>';
+                    } else if ($accion == 'modificar') {
+                        echo '<script>habilitarCamposEquipo();</script>';
+                        echo '<script>habilitarCamposAsignacion();</script>';
+                        echo '<script>habilitarCamposProyector();</script>';
+                    }
+
                     $this->imprimirProyector($proyector);
                 } else {
                     $manejadorImpresora = new ManejadorImpresora();

@@ -85,7 +85,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="../../web/asignacion/computadora/devolver.php">Devolver</a>
+                                                <a href="../../web/asignacion/computadora/modificar.php">Modificar</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -98,7 +98,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="../../web/asignacion/impresora/devolver.php">Devolver</a>
+                                                <a href="../../web/asignacion/impresora/modificar.php">Modificar</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -111,7 +111,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="../../web/asignacion/proyector/devolver.php">Devolver</a>
+                                                <a href="../../web/asignacion/proyector/modificar.php">Modificar</a>
                                             </li>
 
                                         </ul>
@@ -125,7 +125,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="../../web/asignacion/telefono/devolver.php">Devolver</a>
+                                                <a href="../../web/asignacion/telefono/modificar.php">Modificar</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->

@@ -90,7 +90,7 @@ $manejadorOficina = new ManejadorOficina();
                                             </li>
 
                                             <li>
-                                                <a href="../../../web/asignacion/computadora/devolver.php">Devolver</a>
+                                                <a href="../../../web/asignacion/computadora/modificar.php">Modificar</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -103,7 +103,7 @@ $manejadorOficina = new ManejadorOficina();
                                             </li>
 
                                             <li>
-                                                <a href="../../../web/asignacion/impresora/devolver.php">Devolver</a>
+                                                <a href="../../../web/asignacion/impresora/modificar.php">Modificar</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -116,7 +116,7 @@ $manejadorOficina = new ManejadorOficina();
                                             </li>
 
                                             <li>
-                                                <a href="../../../web/asignacion/proyector/devolver.php">Devolver</a>
+                                                <a href="../../../web/asignacion/proyector/modificar.php">Modificar</a>
                                             </li>
 
                                         </ul>
@@ -130,7 +130,7 @@ $manejadorOficina = new ManejadorOficina();
                                             </li>
 
                                             <li>
-                                                <a href="../../../web/asignacion/telefono/devolver.php">Devolver</a>
+                                                <a href="../../../web/asignacion/telefono/modificar.php">Modificar</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -210,7 +210,7 @@ $manejadorOficina = new ManejadorOficina();
                                             <div class="form-group">
                                                 <label>Número de placa</label>
                                                 <input type="text" id="placa" name="placa" class="form-control" placeholder="Número de placa"  required pattern="[0-9]{1,10}" maxlength="10" title="ingrese solo números, mínimo once digitos">
-                                                <button type="button" class="btn btn-default" onclick="buscarImpresora();">
+                                                <button type="button" class="btn btn-default" onclick="buscarImpresora('insertar');">
                                                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                                                 </button>
 

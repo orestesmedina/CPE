@@ -35,8 +35,8 @@ class ManejadorEquipo extends Conexion {
     public function modificarEstadoCriterioObservacion($estado, $criterio, $observacion, $placa) {
         $this->conectar();
         $stmt = $this->getConexion()->prepare('UPDATE Equipo set estado = ?, criterio = ?, observacion = ? WHERE placa = ?');
-        
-        if($stmt) {
+
+        if ($stmt) {
             $stmt->bind_param('sssi', $estado, $criterio, $observacion, $placa);
             $stmt->execute();
             $stmt->close();
@@ -54,8 +54,7 @@ class ManejadorEquipo extends Conexion {
         $stmt = $this->getConexion()->prepare('INSERT INTO Equipo (placa, serie, marca, modelo, estado, criterio, anio_ingreso, observacion, tipoEquipo) '
                 . 'VALUES (?,?,?,?,?,?,?,?,?)');
         if ($stmt) {
-            $stmt->bind_param('isssssiss', $equipo->getPlaca(), $equipo->getSerie(), $equipo->getMarca(), $equipo->getModelo(), $equipo->getEstado(),
-                    $equipo->getCriterio(), $equipo->getAnioIngreso(), $equipo->getObservacion(), $tipo);
+            $stmt->bind_param('isssssiss', $equipo->getPlaca(), $equipo->getSerie(), $equipo->getMarca(), $equipo->getModelo(), $equipo->getEstado(), $equipo->getCriterio(), $equipo->getAnioIngreso(), $equipo->getObservacion(), $tipo);
             $stmt->execute();
             $stmt->close();
             $this->cerrarConexion();
@@ -63,6 +62,25 @@ class ManejadorEquipo extends Conexion {
         } else {
             $this->cerrarConexion();
             return false;
+        }
+    }
+
+    public function getAsignacion($placa) {
+        $this->conectar();
+        if ($stmt = $this->getConexion()->prepare('SELECT Prestamo.idOficina, Persona.nombrePersona FROM Prestamo, Persona '
+                . 'WHERE Prestamo.placa = ? and Prestamo.idPersona = Persona.idPersona and Prestamo.estado = 1')) {
+            $stmt->bind_param('i', $placa);
+            $stmt->execute();
+
+            $stmt->bind_result($idOficina, $nombrePersona);
+            $stmt->fetch();
+
+            $asignacion['idOficina'] = $idOficina;
+            $asignacion['nombrePersona'] = $nombrePersona;
+
+            $this->cerrarConexion();
+            $stmt->close();
+            return $asignacion;
         }
     }
 
