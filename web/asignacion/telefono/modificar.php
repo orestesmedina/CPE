@@ -205,7 +205,7 @@ $manejadorOficina = new ManejadorOficina();
                             <div class="panel-body">
                                 <div class="row">
 
-                                    <form action="../../../control/asignacion/telefono/InsertarController.php" method="POST" role="form" id="nuevaComputadora">
+                                    <form action="../../../control/asignacion/telefono/ModificarController.php" method="POST" role="form" id="nuevaComputadora">
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Número de placa</label>

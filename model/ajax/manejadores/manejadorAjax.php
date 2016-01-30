@@ -4,7 +4,7 @@ class ManejadorAjax extends Conexion {
 
     public function buscarAsignacionComputadora($placa, $accion) {
         $this->conectar();
-        $sql = 'SELECT placa FROM Prestamo WHERE placa = ' . $placa . ' and estado = 1 ';
+        $sql = 'SELECT Prestamo.placa FROM Prestamo, Equipo WHERE Prestamo.placa = ' . $placa . ' and Prestamo.estado = 1 and Equipo.placa = Prestamo.placa and Equipo.tipoEquipo = "COMPUTADORA"';
 
         $result = $this->getConexion()->query($sql);
 
@@ -122,7 +122,7 @@ class ManejadorAjax extends Conexion {
 
     public function buscarAsignacionTelefono($placa, $accion) {
         $this->conectar();
-        $sql = 'SELECT placa FROM Prestamo WHERE placa = ' . $placa . ' and estado = 1 ';
+        $sql = 'SELECT Prestamo.placa FROM Prestamo, Equipo WHERE Prestamo.placa = ' . $placa . ' and Prestamo.estado = 1  and Prestamo.placa = Equipo.placa and Equipo.tipoEquipo = "TELEFONO"';
         $result = $this->getConexion()->query($sql);
 
         if ($result->num_rows > 0) {
@@ -138,7 +138,7 @@ class ManejadorAjax extends Conexion {
             } else if ($accion == 'modificar') {
                 $manejadorTelefono = new ManejadorTelefono();
                 $manejadorEquipo = new ManejadorEquipo();
-                $impresora = $manejadorTelefono->getTelefono($placa);
+                $telefono = $manejadorTelefono->getTelefono($placa);
                 $asignacion = $manejadorEquipo->getAsignacion($placa);
                 echo '<script>limpiarCamposEquipo();</script>';
                 echo '<script>limpiarCamposTelefono();</script>';
@@ -146,7 +146,7 @@ class ManejadorAjax extends Conexion {
                 echo '<script>habilitarCamposEquipo();</script>';
                 echo '<script>habilitarCamposAsignacion();</script>';
                 echo '<script>habilitarCamposTelefono();</script>';
-                $this->imprimirImpresora($impresora);
+                $this->imprimirTelefono($telefono);
                 $this->imprimirAsignacion($asignacion);
             }
         } else {
@@ -228,7 +228,7 @@ class ManejadorAjax extends Conexion {
 
     public function buscarAsignacionImpresora($placa, $accion) {
         $this->conectar();
-        $sql = 'SELECT placa FROM Prestamo WHERE placa = ' . $placa . ' and estado = 1 ';
+        $sql = 'SELECT Prestamo.placa FROM Prestamo, Equipo WHERE Prestamo.placa = ' . $placa . ' and Prestamo.estado = 1 and Prestamo.placa = Equipo.placa and Equipo.tipoEquipo = "IMPRESORA"';
         $result = $this->getConexion()->query($sql);
 
         if ($result->num_rows > 0) {
@@ -334,7 +334,7 @@ class ManejadorAjax extends Conexion {
 
     public function buscarAsignacionProyector($placa, $accion) {
         $this->conectar();
-        $sql = 'SELECT placa FROM Prestamo WHERE placa = ' . $placa . ' and estado = 1 ';
+        $sql = 'SELECT Prestamo.placa FROM Prestamo, Equipo WHERE Prestamo.placa = ' . $placa . ' and Prestamo.estado = 1 and Prestamo.placa = Equipo.placa and Equipo.tipoEquipo = "PROYECTOR"';
 
         $result = $this->getConexion()->query($sql);
 

@@ -18,7 +18,7 @@ class ManejadorComputadora extends Conexion {
                 $stmt->close();
                 $this->cerrarConexion();
                 return true;
-            } else { 
+            } else {
                 $this->cerrarConexion();
                 return false;
             }
@@ -52,7 +52,7 @@ class ManejadorComputadora extends Conexion {
 
             $stmt->bind_result($pla, $marca, $modelo, $serie, $estado, $observacion, $anioIngreso, $procesador, $cantMemoria, $criterio, $tipo);
             $stmt->fetch();
-            
+
             $computadora['placa'] = $pla;
             $computadora['marca'] = $marca;
             $computadora['modelo'] = $modelo;
@@ -75,28 +75,21 @@ class ManejadorComputadora extends Conexion {
         return false;
     }
 
-    public function modificarComputadora($placa, $criterio, $estado, $observacion) {
+    public function modificarComputadora(Computadora $computadora) {
 
         $this->conectar();
-        $sql = "UPDATE Equipo SET observacion = '" . $observacion . "', estado = '" . $estado . "' WHERE placa = " . $placa;
+        $sql = "UPDATE Computadora SET tipo = '" . $computadora->getTipo() . "',"
+                . " procesador = '" . $computadora->getProcesador() . "',"
+                . " cant_memoria_hhd = '" . $computadora->getCantMemoriaHhd() . "'"
+                . " WHERE placa = " . $computadora->getPlaca();
 
         if ($this->getConexion()->query($sql) === TRUE) {
-
-            $sql = "UPDATE Computadora SET criterio = '" . $criterio . "' WHERE placa = " . $placa;
-
-            if ($this->getConexion()->query($sql) === TRUE) {
-                $this->cerrarConexion();
-                return true;
-            } else {
-                $this->cerrarConexion();
-                return false;
-            }
+            $this->cerrarConexion();
+            return true;
         } else {
             $this->cerrarConexion();
             return false;
         }
-
-        $this->cerrarConexion();
     }
 
     public function __destruct() {

@@ -84,6 +84,21 @@ class ManejadorEquipo extends Conexion {
         }
     }
 
+    public function modificarEquipo(Equipo $equipo) {
+        $this->conectar();
+        $sql = 'UPDATE Equipo SET serie = "' . $equipo->getSerie() . '", marca = "' . $equipo->getMarca() . '", '
+                . 'modelo = "' . $equipo->getModelo() . '", criterio = "' . $equipo->getCriterio() . '", '
+                . 'estado = "' . $equipo->getEstado() . '", anio_ingreso = ' . $equipo->getAnioIngreso() . ', observacion = "' . $equipo->getObservacion() . '" '
+                . 'WHERE placa = ' . $equipo->getPlaca();
+        if($this->getConexion()->query($sql) === true) {
+            $this->cerrarConexion();
+            return true;
+        } else {
+            $this->cerrarConexion();
+            return false;
+        }
+    }
+
     function __destruct() {
         parent::__destruct();
     }

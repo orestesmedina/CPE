@@ -18,12 +18,12 @@ class ManejadorImpresora extends Conexion {
             return false;
         }
     }
-    
+
     public function modificarTipoConsumible($tipo, $consumible, $placa) {
         $this->conectar();
         $stmt = $this->getConexion()->prepare('UPDATE Impresora set tipo = ?, set consumible = ? WHERE placa = ?');
-        
-        if($stmt) {
+
+        if ($stmt) {
             $stmt->bind_param('ssi', $tipo, $consumible, $placa);
             $stmt->execute();
             $stmt->close();
@@ -89,22 +89,12 @@ class ManejadorImpresora extends Conexion {
         return false;
     }
 
-    public function modificarImpresora($placa, $criterio, $estado, $observacion) {
-
+    public function modificarImpresora(Impresora $impresora) {
         $this->conectar();
-        $sql = "UPDATE Equipo SET observacion = '" . $observacion . "', estado = '" . $estado . "' WHERE placa = " . $placa;
-
+        $sql = "UPDATE Impresora SET consumible = '" . $impresora->getConsumible() . "', tipo = '" . $impresora->getTipo() . "' WHERE placa = " . $impresora->getPlaca();
         if ($this->getConexion()->query($sql) === TRUE) {
-
-            $sql = "UPDATE Computadora SET criterio = '" . $criterio . "' WHERE placa = " . $placa;
-
-            if ($this->getConexion()->query($sql) === TRUE) {
-                $this->cerrarConexion();
-                return true;
-            } else {
-                $this->cerrarConexion();
-                return false;
-            }
+            $this->cerrarConexion();
+            return true;
         } else {
             $this->cerrarConexion();
             return false;

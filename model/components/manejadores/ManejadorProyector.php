@@ -88,28 +88,18 @@ class ManejadorProyector extends Conexion {
         return false;
     }
 
-    public function modificarProyector($placa, $criterio, $estado, $observacion) {
+    public function modificarProyector(Proyector $proyector) {
 
         $this->conectar();
-        $sql = "UPDATE Equipo SET observacion = '" . $observacion . "', estado = '" . $estado . "' WHERE placa = " . $placa;
+        $sql = "UPDATE Proyector SET funcionalidad = '" . $proyector->getFuncionalidad() . "' WHERE placa = " . $proyector->getPlaca();
 
         if ($this->getConexion()->query($sql) === TRUE) {
-
-            $sql = "UPDATE Computadora SET criterio = '" . $criterio . "' WHERE placa = " . $placa;
-
-            if ($this->getConexion()->query($sql) === TRUE) {
-                $this->cerrarConexion();
-                return true;
-            } else {
-                $this->cerrarConexion();
-                return false;
-            }
+            $this->cerrarConexion();
+            return true;
         } else {
             $this->cerrarConexion();
             return false;
         }
-
-        $this->cerrarConexion();
     }
 
     public function __destruct() {

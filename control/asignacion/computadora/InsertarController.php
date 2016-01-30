@@ -46,14 +46,16 @@ if (isset($_POST['placa']) && !empty($_POST['placa']) &&
     $asignacion->setIdOficina($idOficina);
     $asignacion->setFechaPrestamo(date('y-m-d'));
 
-    $persona = $manejadorPersona->bucarPersonaPorNombre(mb_strtoupper($_POST['idPersona'], 'UTF-8'));
+    $persona = $manejadorPersona->getIdPersona(mb_strtoupper($_POST['idPersona'], 'UTF-8'));
     if ($persona != false) {
         $asignacion->setIdPersona($persona);
     } else {
         $manejadorPersona->insertarPersona(mb_strtoupper($_POST['idPersona'], 'UTF-8'));
-        $persona = $manejadorPersona->bucarPersonaPorNombre(mb_strtoupper($_POST['idPersona'], 'UTF-8'));
+        $persona = $manejadorPersona->getIdPersona(mb_strtoupper($_POST['idPersona'], 'UTF-8'));
         $asignacion->setIdPersona($persona);
     }
+    
+    
 
     $existeEquipo = $manejadorEquipo->existeEquipoConTipo($placa, 'COMPUTADORA');
     if ($existeEquipo == true) {

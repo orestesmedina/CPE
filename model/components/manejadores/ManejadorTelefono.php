@@ -18,12 +18,12 @@ class ManejadorTelefono extends Conexion {
             return false;
         }
     }
-    
+
     public function modificarExtension($extension, $placa) {
         $this->conectar();
         $stmt = $this->getConexion()->prepare('UPDATE Telefonia set extension = ? WHERE placa = ?');
-        
-        if($stmt) {
+
+        if ($stmt) {
             $stmt->bind_param('si', $extension, $placa);
             $stmt->execute();
             $stmt->close();
@@ -88,28 +88,18 @@ class ManejadorTelefono extends Conexion {
         return false;
     }
 
-    public function modificarTelefono($placa, $criterio, $estado, $observacion) {
+    public function modificarTelefono(Telefono $telefono) {
 
         $this->conectar();
-        $sql = "UPDATE Equipo SET observacion = '" . $observacion . "', estado = '" . $estado . "' WHERE placa = " . $placa;
+        $sql = "UPDATE Telefonia SET extension = '" . $telefono->getExtension() . "' WHERE placa = " . $telefono->getPlaca();
 
         if ($this->getConexion()->query($sql) === TRUE) {
-
-            $sql = "UPDATE Computadora SET criterio = '" . $criterio . "' WHERE placa = " . $placa;
-
-            if ($this->getConexion()->query($sql) === TRUE) {
-                $this->cerrarConexion();
-                return true;
-            } else {
-                $this->cerrarConexion();
-                return false;
-            }
+            $this->cerrarConexion();
+            return true;
         } else {
             $this->cerrarConexion();
             return false;
         }
-
-        $this->cerrarConexion();
     }
 
     public function __destruct() {
